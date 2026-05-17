@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Construido con"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hola, soy",
+      "name": "Marlon Ramirez",
+      "tagline": "Construyo software robusto que impulsa el negocio hacia adelante",
+      "ctaPrimary": "Ver proyectos",
+      "ctaSecondary": "Contactar"
+    },
+    "projects": {
+      "title": "Proyectos destacados",
+      "subtitle": "Soluciones empresariales diseñadas con precisión y escalabilidad",
+      "viewAll": "Ver todos los proyectos",
+      "viewProject": "Ver proyecto"
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Una selección de trabajos robustos y bien construidos",
+    "status": {
+      "production": "En producción",
+      "development": "En desarrollo",
+      "planned": "Planificado"
+    },
+    "techStack": "Stack técnico",
+    "features": "Características",
+    "links": {
+      "live": "Ver en vivo",
+      "repo": "Repositorio",
+      "back": "Volver a proyectos",
+      "detail": "Ver detalle"
+    },
+    "cashpilot": {
+      "title": "CashPilot",
+      "description": "Software de gestión financiera personal con dashboard analytics, gestión de tarjetas de crédito, compras a cuotas, multi-moneda y ocho temas visuales.",
+      "feature1": "Dashboard analytics con múltiples librerías de gráficos",
+      "feature2": "Gestión de tarjetas de crédito y compras a cuotas",
+      "feature3": "Sistema de roles y permisos granular (RBAC)",
+      "feature4": "Ocho temas visuales personalizables",
+      "feature5": "Autenticación JWT con 2FA",
+      "feature6": "Deployment production-ready con Kubernetes"
+    },
+    "logis": {
+      "title": "Logis",
+      "description": "[Descripción detallada pendiente — proyecto en desarrollo]",
+      "feature1": "[Característica por definir]",
+      "feature2": "[Característica por definir]",
+      "feature3": "[Característica por definir]"
+    },
+    "project3": {
+      "title": "Proyecto 3",
+      "description": "[Proyecto por definir — placeholder para futuro trabajo]",
+      "feature1": "[Por definir]",
+      "feature2": "[Por definir]",
+      "feature3": "[Por definir]"
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "role": "Desarrollador Full Stack",
+    "bio1": "Soy un desarrollador apasionado por construir software que resuelve problemas reales. Con experiencia en el ecosistema React, Next.js y Laravel, me especializo en crear aplicaciones robustas, escalables y con excelente experiencia de usuario.",
+    "bio2": "Mi enfoque combina pensamiento técnico profundo con atención al detalle en diseño y arquitectura. Creo en la calidad del código, las buenas prácticas y la entrega continua de valor.",
+    "bio3": "Cuando no estoy codeando, me gusta explorar nuevas tecnologías, contribuir a proyectos open source y compartir conocimiento con la comunidad.",
+    "experience": {
+      "title": "Experiencia",
+      "placeholder": "[Información de experiencia por añadir]"
+    },
+    "skills": {
+      "title": "Stack técnico",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Herramientas & DevOps"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Tienes un proyecto en mente o quieres colaborar? Hablemos.",
+    "cta": "Construyamos algo grandioso juntos",
+    "links": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email",
+      "twitter": "Twitter / X"
+    },
+    "availability": "Disponible para oportunidades y colaboraciones."
+  },
+  "meta": {
+    "about": {
+      "title": "Sobre mí",
+      "description": "Conoce más sobre Marlon Ramirez, desarrollador full stack."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "¿Tienes un proyecto en mente? Ponte en contacto con Marlon Ramirez."
+    },
+    "projects": {
+      "title": "Proyectos",
+      "description": "Una selección de proyectos robustos y bien construidos."
+    },
+    "notFound": {
+      "title": "Página no encontrada",
+      "projectTitle": "Proyecto no encontrado"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "comingSoon": "Próximamente",
+    "inDevelopment": "En desarrollo"
+  }
+}
