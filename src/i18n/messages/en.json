@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hi, I'm",
+      "name": "Marlon Ramirez",
+      "tagline": "Building robust software that drives business forward",
+      "ctaPrimary": "View projects",
+      "ctaSecondary": "Get in touch"
+    },
+    "projects": {
+      "title": "Featured projects",
+      "subtitle": "Enterprise solutions designed with precision and scalability",
+      "viewAll": "View all projects",
+      "viewProject": "View project"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A selection of robust, well-crafted work",
+    "status": {
+      "production": "In production",
+      "development": "In development",
+      "planned": "Planned"
+    },
+    "techStack": "Tech stack",
+    "features": "Features",
+    "links": {
+      "live": "Live site",
+      "repo": "Repository",
+      "back": "Back to projects",
+      "detail": "View details"
+    },
+    "cashpilot": {
+      "title": "CashPilot",
+      "description": "Personal financial management software with dashboard analytics, credit card management, installment purchases, multi-currency support, and eight visual themes.",
+      "feature1": "Dashboard analytics with multiple chart libraries",
+      "feature2": "Credit card and installment purchase management",
+      "feature3": "Granular role-based access control (RBAC)",
+      "feature4": "Eight customizable visual themes",
+      "feature5": "JWT authentication with 2FA",
+      "feature6": "Production-ready Kubernetes deployment"
+    },
+    "logis": {
+      "title": "Logis",
+      "description": "[Detailed description pending — project in development]",
+      "feature1": "[Feature to be defined]",
+      "feature2": "[Feature to be defined]",
+      "feature3": "[Feature to be defined]"
+    },
+    "project3": {
+      "title": "Project 3",
+      "description": "[Project to be defined — placeholder for future work]",
+      "feature1": "[To be defined]",
+      "feature2": "[To be defined]",
+      "feature3": "[To be defined]"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "role": "Full Stack Developer",
+    "bio1": "I'm a developer passionate about building software that solves real problems. With experience in the React, Next.js, and Laravel ecosystems, I specialize in creating robust, scalable applications with excellent user experience.",
+    "bio2": "My approach combines deep technical thinking with attention to detail in design and architecture. I believe in code quality, best practices, and continuous delivery of value.",
+    "bio3": "When I'm not coding, I enjoy exploring new technologies, contributing to open source projects, and sharing knowledge with the community.",
+    "experience": {
+      "title": "Experience",
+      "placeholder": "[Experience information to be added]"
+    },
+    "skills": {
+      "title": "Tech stack",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools & DevOps"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a project in mind or want to collaborate? Let's talk.",
+    "cta": "Let's build something great together",
+    "links": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email",
+      "twitter": "Twitter / X"
+    },
+    "availability": "Available for opportunities and collaborations."
+  },
+  "meta": {
+    "about": {
+      "title": "About",
+      "description": "Learn more about Marlon Ramirez, full stack developer."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Have a project in mind? Get in touch with Marlon Ramirez."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "A selection of robust, well-crafted projects."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "projectTitle": "Project not found"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "comingSoon": "Coming soon",
+    "inDevelopment": "In development"
+  }
+}
