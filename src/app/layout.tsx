@@ -31,6 +31,9 @@ const silkscreen = Silkscreen({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "https://marlonrx.com"
+  ),
   title: "Marlon Ramirez — Full Stack Developer",
   description:
     "Portfolio of Marlon Ramirez. Building robust software that drives business forward.",
