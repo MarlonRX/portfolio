@@ -7,6 +7,8 @@ export interface Project {
   techStack: string[];
   features: string[];
   image?: string;
+  video?: string;
   liveUrl?: string;
   repoUrl?: string;
+  view: boolean;
 }

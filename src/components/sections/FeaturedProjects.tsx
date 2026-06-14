@@ -11,7 +11,7 @@ export default function FeaturedProjects() {
   const t = useTranslations("home.projects");
   const locale = useLocale();
 
-  const featuredProjects = projects.slice(0, 3);
+  const featuredProjects = projects.filter((p) => p.view).slice(0, 3);
 
   return (
     <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
@@ -31,7 +31,7 @@ export default function FeaturedProjects() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.slug}
@@ -39,8 +39,9 @@ export default function FeaturedProjects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} priority={index < 2} />
             </motion.div>
           ))}
         </div>

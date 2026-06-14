@@ -30,21 +30,25 @@ export default async function ProjectsPage({
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <ScrollReveal>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-4">
+            <h1 className="text-5xl md:text-6xl font-pixel-title tracking-tight text-text-primary mb-4">
               {t("title")}
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-text-secondary text-lg max-w-2xl">
+            <p className="text-text-secondary text-xl md:text-2xl max-w-3xl leading-relaxed">
               {t("subtitle")}
             </p>
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {projects.map((project, idx) => (
-            <ScrollReveal key={project.slug} delay={0.1 + idx * 0.08}>
-              <ProjectCard project={project} />
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+          {projects.filter((p) => p.view).map((project, idx) => (
+            <ScrollReveal
+              key={project.slug}
+              delay={0.1 + idx * 0.08}
+              className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
+            >
+              <ProjectCard project={project} priority={idx < 2} />
             </ScrollReveal>
           ))}
         </div>

@@ -14,6 +14,7 @@ interface ImageWithFallbackProps {
   fallbackClassName?: string;
   fallbackLabel?: string;
   priority?: boolean;
+  sizes?: string;
 }
 
 export default function ImageWithFallback({
@@ -26,6 +27,7 @@ export default function ImageWithFallback({
   fallbackClassName = "",
   fallbackLabel,
   priority = false,
+  sizes,
 }: ImageWithFallbackProps) {
   const [error, setError] = useState(false);
 
@@ -62,6 +64,7 @@ export default function ImageWithFallback({
       src={src}
       alt={alt}
       priority={priority}
+      sizes={sizes}
       onError={() => setError(true)}
     />
   );
