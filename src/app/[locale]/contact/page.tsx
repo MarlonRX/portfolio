@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { getServerTranslations } from "@/lib/i18n";
-import { Code2, Briefcase, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Code2, Briefcase, Mail, ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import SpriteAnimator from "@/components/ui/SpriteAnimator";
 
 export async function generateMetadata({
   params,
@@ -19,27 +20,21 @@ export async function generateMetadata({
 const contactLinks = [
   {
     name: "GitHub",
-    href: "#",
+    href: "https://github.com/MarlonRX",
     icon: <Code2 size={24} />,
     handle: "@MarlonRX",
   },
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/marlon-ramirez-6b448b268",
     icon: <Briefcase size={24} />,
-    handle: "[Por definir]",
-  },
-  {
-    name: "Twitter / X",
-    href: "#",
-    icon: <MessageCircle size={24} />,
-    handle: "[Por definir]",
+    handle: "Marlon Ramirez",
   },
   {
     name: "Email",
-    href: "#",
+    href: "mailto:mramirezce14@gmail.com",
     icon: <Mail size={24} />,
-    handle: "[Por definir]",
+    handle: "mramirezce14@gmail.com",
   },
 ];
 
@@ -56,8 +51,16 @@ export default async function ContactPage({
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <ScrollReveal>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-4">
-              {t("title")}
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-4 flex items-center justify-center gap-4">
+              <span>{t("title")}</span>
+              <SpriteAnimator
+                src="/sprites/ghost.png"
+                frameCount={2}
+                frameWidth={32}
+                frameHeight={32}
+                fps={1.5}
+                className="shrink-0 animate-bounce"
+              />
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
@@ -103,9 +106,19 @@ export default async function ContactPage({
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="text-center text-sm text-text-muted">
-            {t("availability")}
-          </p>
+          <div className="flex flex-col items-center gap-3">
+            <SpriteAnimator
+              src="/sprites/heart.png"
+              frameCount={2}
+              frameWidth={32}
+              frameHeight={32}
+              fps={1}
+              className="shrink-0"
+            />
+            <p className="text-center text-sm text-text-muted">
+              {t("availability")}
+            </p>
+          </div>
         </ScrollReveal>
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link
             href={`/${locale}`}
-            className="text-lg font-bold tracking-tight text-text-primary hover:text-accent-primary transition-colors"
+            className="text-base sm:text-lg font-pixel-title tracking-tight text-text-primary hover:text-accent-primary transition-colors"
           >
             MRX
           </Link>
@@ -42,7 +42,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={`/${locale}${link.href}`}
-                className={`relative text-sm font-medium transition-colors ${
+                className={`relative text-xl font-pixel-mono tracking-wide transition-colors ${
                   isActive(link.href)
                     ? "text-accent-primary"
                     : "text-text-secondary hover:text-text-primary"
@@ -87,7 +87,7 @@ export default function Navbar() {
                   key={link.href}
                   href={`/${locale}${link.href}`}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-base font-medium transition-colors ${
+                  className={`block text-xl font-pixel-mono transition-colors ${
                     isActive(link.href)
                       ? "text-accent-primary"
                       : "text-text-secondary hover:text-text-primary"

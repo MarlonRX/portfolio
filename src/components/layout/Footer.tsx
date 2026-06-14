@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { Code2, Briefcase, Mail, MessageCircle } from "lucide-react";
+import { Code2, Briefcase, Mail } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export default function Footer() {
@@ -15,7 +15,7 @@ export default function Footer() {
         <ScrollReveal>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-col items-center md:items-start gap-2">
-              <span className="text-lg font-bold tracking-tight text-text-primary">
+              <span className="text-base sm:text-lg font-pixel-title tracking-tight text-text-primary">
                 Marlon Ramirez
               </span>
               <p className="text-sm text-text-muted">
@@ -24,10 +24,9 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-4">
-              <SocialLink href="#" icon={<Code2 size={20} />} label="GitHub" />
-              <SocialLink href="#" icon={<Briefcase size={20} />} label="LinkedIn" />
-              <SocialLink href="#" icon={<MessageCircle size={20} />} label="Twitter" />
-              <SocialLink href="#" icon={<Mail size={20} />} label="Email" />
+              <SocialLink href="https://github.com/MarlonRX" icon={<Code2 size={20} />} label="GitHub" />
+              <SocialLink href="https://www.linkedin.com/in/marlon-ramirez-6b448b268" icon={<Briefcase size={20} />} label="LinkedIn" />
+              <SocialLink href="mailto:mramirezce14@gmail.com" icon={<Mail size={20} />} label="Email" />
             </div>
           </div>
         </ScrollReveal>

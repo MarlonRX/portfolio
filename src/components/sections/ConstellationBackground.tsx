@@ -18,7 +18,6 @@ export default function ConstellationBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const particlesRef = useRef<Particle[]>([]);
-  const guideRef = useRef({ x: -1000, y: -1000 });
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
@@ -28,12 +27,11 @@ export default function ConstellationBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const PARTICLE_COUNT = 40;
-    const CONNECTION_DISTANCE = 120;
-    const MOUSE_INFLUENCE = 180;
-    const ATTRACTION_FORCE = 0.02;
-    const ORBITAL_FORCE = 0.015;
-    const GUIDE_LERP = 0.06;
+    const PARTICLE_COUNT = 35;
+    const CONNECTION_DISTANCE = 110;
+    const MOUSE_INFLUENCE = 160;
+    const ATTRACTION_FORCE = 0.005;
+    const ORBITAL_FORCE = 0.004;
 
     function resize() {
       if (!canvas) return;
@@ -47,13 +45,13 @@ export default function ConstellationBackground() {
       particlesRef.current = Array.from({ length: PARTICLE_COUNT }, () => ({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
-        size: Math.random() * 1 + 1,
-        alpha: Math.random() * 0.3 + 0.3,
-        baseAlpha: Math.random() * 0.3 + 0.3,
+        vx: (Math.random() - 0.5) * 0.05,
+        vy: (Math.random() - 0.5) * 0.05,
+        size: Math.random() * 1.5 + 1.2,
+        alpha: Math.random() * 0.4 + 0.3,
+        baseAlpha: Math.random() * 0.4 + 0.3,
         orbitAngle: Math.random() * Math.PI * 2,
-        orbitSpeed: (Math.random() - 0.5) * 0.002,
+        orbitSpeed: (Math.random() - 0.5) * 0.0005,
       }));
     }
 
@@ -66,15 +64,25 @@ export default function ConstellationBackground() {
 
       const particles = particlesRef.current;
       const mouse = mouseRef.current;
-      const guide = guideRef.current;
 
-      // Update guide star (lerp towards mouse)
-      if (mouse.x >= 0) {
-        guide.x += (mouse.x - guide.x) * GUIDE_LERP;
-        guide.y += (mouse.y - guide.y) * GUIDE_LERP;
+      // 1. Draw grid / lines background (Subtle 8-bit circuit grid)
+      ctx.strokeStyle = "rgba(34, 197, 94, 0.025)";
+      ctx.lineWidth = 1;
+      const gridSize = 80;
+      for (let x = 0; x < width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
       }
 
-      // Update particles
+      // 2. Update and draw particles (Twinkling squares)
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
@@ -86,13 +94,10 @@ export default function ConstellationBackground() {
 
           if (dist < MOUSE_INFLUENCE && dist > 0) {
             const force = (1 - dist / MOUSE_INFLUENCE) * ATTRACTION_FORCE;
-
-            // Tangential component for orbital effect
             p.orbitAngle += p.orbitSpeed + force * 0.5;
             const tangentX = -Math.sin(p.orbitAngle);
             const tangentY = Math.cos(p.orbitAngle);
 
-            // Radial attraction towards mouse
             const radialX = (dx / dist) * force;
             const radialY = (dy / dist) * force;
 
@@ -101,31 +106,28 @@ export default function ConstellationBackground() {
           }
         }
 
-        // Gentle floating (base movement)
+        // Float movement
         p.x += p.vx;
         p.y += p.vy;
+        p.vx *= 0.992;
+        p.vy *= 0.992;
 
-        // Soft damping
-        p.vx *= 0.995;
-        p.vy *= 0.995;
+        // Opacity oscillation (twinkle)
+        p.alpha = p.baseAlpha + Math.sin(Date.now() * 0.001 + i) * 0.15;
 
-        // Subtle alpha breathing
-        p.alpha = p.baseAlpha + Math.sin(Date.now() * 0.001 + i) * 0.1;
-
-        // Wrap around
+        // Boundary wrap
         if (p.x < -10) p.x = width + 10;
         if (p.x > width + 10) p.x = -10;
         if (p.y < -10) p.y = height + 10;
         if (p.y > height + 10) p.y = -10;
 
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        // Draw pixelated square
         ctx.fillStyle = `rgba(212, 175, 55, ${Math.max(0.1, p.alpha)})`;
-        ctx.fill();
+        const size = Math.ceil(p.size);
+        ctx.fillRect(Math.round(p.x - size), Math.round(p.y - size), size * 2, size * 2);
       }
 
-      // Draw connections (ultra subtle)
+      // 3. Draw connections (Retro circuit traces)
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const p1 = particles[i];
@@ -135,52 +137,17 @@ export default function ConstellationBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < CONNECTION_DISTANCE) {
-            const alpha = (1 - dist / CONNECTION_DISTANCE) * 0.06;
+            const alpha = (1 - dist / CONNECTION_DISTANCE) * 0.07;
             ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
+            ctx.moveTo(Math.round(p1.x), Math.round(p1.y));
+            // Orthogonal retro 90-degree lines
+            ctx.lineTo(Math.round(p2.x), Math.round(p1.y));
+            ctx.lineTo(Math.round(p2.x), Math.round(p2.y));
             ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
-            ctx.lineWidth = 0.5;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
-      }
-
-      // Draw guide star
-      if (guide.x >= 0) {
-        // Outer glow
-        ctx.beginPath();
-        ctx.arc(guide.x, guide.y, 8, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(212, 175, 55, 0.15)";
-        ctx.fill();
-
-        // Inner glow
-        ctx.beginPath();
-        ctx.arc(guide.x, guide.y, 5, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(212, 175, 55, 0.3)";
-        ctx.fill();
-
-        // Core
-        ctx.beginPath();
-        ctx.arc(guide.x, guide.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(212, 175, 55, 1)";
-        ctx.fill();
-
-        // Star spike (vertical)
-        ctx.beginPath();
-        ctx.moveTo(guide.x, guide.y - 10);
-        ctx.lineTo(guide.x, guide.y + 10);
-        ctx.strokeStyle = "rgba(212, 175, 55, 0.4)";
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-
-        // Star spike (horizontal)
-        ctx.beginPath();
-        ctx.moveTo(guide.x - 10, guide.y);
-        ctx.lineTo(guide.x + 10, guide.y);
-        ctx.strokeStyle = "rgba(212, 175, 55, 0.4)";
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
       }
 
       rafRef.current = requestAnimationFrame(draw);
@@ -188,9 +155,10 @@ export default function ConstellationBackground() {
 
     function handleMouseMove(e: MouseEvent) {
       mouseRef.current = { x: e.clientX, y: e.clientY };
-      if (guideRef.current.x < 0) {
-        guideRef.current = { x: e.clientX, y: e.clientY };
-      }
+    }
+
+    function handleMouseLeave() {
+      mouseRef.current = { x: -1000, y: -1000 };
     }
 
     resize();
@@ -202,11 +170,13 @@ export default function ConstellationBackground() {
       createParticles();
     });
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
