@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getServerTranslations } from "@/lib/i18n";
 import { Code2, Server, Wrench } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import SpriteAnimator from "@/components/ui/SpriteAnimator";
 
 export async function generateMetadata({
   params,
@@ -54,14 +55,27 @@ export default async function AboutPage({
       <div className="max-w-4xl mx-auto">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-10 mb-16">
-            {/* Avatar placeholder */}
-            <div className="shrink-0 w-40 h-40 md:w-48 md:h-48 rounded-full bg-bg-elevated border border-border-subtle flex items-center justify-center overflow-hidden">
-              <span className="text-4xl font-bold text-text-muted">MRX</span>
+            <div className="shrink-0 w-64 h-64 pixel-border crt-screen bg-bg-elevated overflow-hidden relative">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/sprites/avatar-pixelated.png"
+                alt="Marlon Ramirez"
+                className="w-full h-full object-cover"
+                style={{ imageRendering: "pixelated" }}
+              />
             </div>
 
             <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-2">
-                {t("title")}
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-2 flex items-center justify-center md:justify-start gap-4">
+                <span>{t("title")}</span>
+                <SpriteAnimator
+                  src="/sprites/dino.png"
+                  frameCount={2}
+                  frameWidth={32}
+                  frameHeight={32}
+                  fps={2}
+                  className="shrink-0"
+                />
               </h1>
               <p className="text-accent-secondary font-medium mb-6">
                 {t("role")}
@@ -113,8 +127,38 @@ export default async function AboutPage({
             <h2 className="text-2xl font-bold text-text-primary mb-6">
               {t("experience.title")}
             </h2>
-            <div className="bg-bg-surface border border-border-subtle rounded-xl p-8 text-center">
-              <p className="text-text-muted">{t("experience.placeholder")}</p>
+            <div className="bg-bg-surface border border-border-subtle rounded-xl p-8 md:p-10 relative overflow-hidden group hover:border-border-default transition-colors duration-300">
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-text-primary group-hover:text-accent-primary transition-colors">
+                    {t("experience.job1.role")}
+                  </h3>
+                  <p className="text-base text-accent-secondary font-medium mt-1">
+                    {t("experience.job1.company")} &middot; {t("experience.job1.type")}
+                  </p>
+                </div>
+                <div className="text-left md:text-right shrink-0">
+                  <span className="inline-block px-3 py-1 font-mono text-sm bg-accent-secondary/10 border border-accent-secondary/20 text-accent-secondary">
+                    {t("experience.job1.period")}
+                  </span>
+                  <p className="text-xs text-text-muted mt-2">
+                    {t("experience.job1.location")}
+                  </p>
+                </div>
+              </div>
+              <p className="text-text-secondary text-base leading-relaxed mb-6">
+                {t("experience.job1.description")}
+              </p>
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-border-subtle">
+                {["PHP", "Next.js", "TypeScript"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="inline-flex px-2.5 py-1 text-xs font-mono text-text-muted bg-bg-elevated border border-border-subtle rounded-md"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </ScrollReveal>

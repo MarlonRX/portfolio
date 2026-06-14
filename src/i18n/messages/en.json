@@ -13,7 +13,9 @@
     "hero": {
       "greeting": "Hi, I'm",
       "name": "Marlon Ramirez",
-      "tagline": "Building robust software that drives business forward",
+      "taglinePrefix": "I design and build ",
+      "taglineWords": ["high-performance software.", "distributed systems.", "scalable solutions.", "efficient applications."],
+      "taglineSuffix": "",
       "ctaPrimary": "View projects",
       "ctaSecondary": "Get in touch"
     },
@@ -43,6 +45,7 @@
     "cashpilot": {
       "title": "CashPilot",
       "description": "Personal financial management software with dashboard analytics, credit card management, installment purchases, multi-currency support, and eight visual themes.",
+      "longDescription": "CashPilot is a comprehensive personal financial management solution that allows users to track their transactions, manage credit cards, perform installment purchases, and visualize financial metrics through a complete dashboard with multiple charting libraries.",
       "feature1": "Dashboard analytics with multiple chart libraries",
       "feature2": "Credit card and installment purchase management",
       "feature3": "Granular role-based access control (RBAC)",
@@ -73,7 +76,15 @@
     "bio3": "When I'm not coding, I enjoy exploring new technologies, contributing to open source projects, and sharing knowledge with the community.",
     "experience": {
       "title": "Experience",
-      "placeholder": "[Experience information to be added]"
+      "job1": {
+        "role": "Web Application Developer",
+        "company": "ADP Solutions Software",
+        "type": "Full-time",
+        "period": "Apr 2024 - Present",
+        "location": "Colombia (Remote)",
+        "tech": "PHP, Next.js, TypeScript",
+        "description": "Developing robust web applications, optimizing performance, and maintaining modern front-end and back-end architectures."
+      }
     },
     "skills": {
       "title": "Tech stack",
@@ -89,8 +100,7 @@
     "links": {
       "github": "GitHub",
       "linkedin": "LinkedIn",
-      "email": "Email",
-      "twitter": "Twitter / X"
+      "email": "Email"
     },
     "availability": "Available for opportunities and collaborations."
   },
