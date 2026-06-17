@@ -52,7 +52,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
       </div>
 
       {/* Card content */}
-      <div className="relative z-10 h-full bg-bg-surface border border-border-subtle rounded-xl overflow-hidden group-hover:border-border-default transition-colors duration-300">
+      <div className="relative z-10 h-full flex flex-col bg-bg-surface border border-border-subtle rounded-xl overflow-hidden group-hover:border-border-default transition-colors duration-300">
         {/* Media area - large image/video */}
         <div className="relative aspect-[16/10] bg-bg-elevated overflow-hidden">
           {/* Image / Fallback */}
@@ -105,10 +105,15 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
           <div className="absolute inset-0 bg-gradient-to-t from-bg-surface via-transparent to-transparent opacity-60 pointer-events-none" />
         </div>
 
-        <div className="p-8">
-          <h3 className="text-2xl md:text-3xl font-pixel-title text-text-primary mb-3 group-hover:text-accent-primary transition-colors">
-            {t.has(`${project.slug}.title`) ? t(`${project.slug}.title`) : project.title}
-          </h3>
+        <div className="p-8 flex flex-col flex-1">
+          <Link
+            href={`/${locale}/projects/${project.slug}`}
+            className="block"
+          >
+            <h3 className="text-2xl md:text-3xl font-pixel-title text-text-primary mb-3 group-hover:text-accent-primary transition-colors">
+              {t.has(`${project.slug}.title`) ? t(`${project.slug}.title`) : project.title}
+            </h3>
+          </Link>
 
           <p className="text-text-secondary text-base leading-relaxed mb-6 line-clamp-3">
             {t.has(`${project.slug}.description`) ? t(`${project.slug}.description`) : project.description}
@@ -130,7 +135,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
             )}
           </div>
 
-          <div className="flex items-center gap-4 pt-5 border-t border-border-subtle">
+          <div className="flex items-center gap-4 pt-5 border-t border-border-subtle mt-auto">
             <Link
               href={`/${locale}/projects/${project.slug}`}
               className="inline-flex items-center gap-2 text-lg md:text-xl font-pixel-mono text-accent-secondary hover:text-accent-secondary-hover transition-colors group/link"

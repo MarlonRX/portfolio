@@ -53,6 +53,18 @@
       "feature5": "JWT authentication with 2FA",
       "feature6": "Production-ready Kubernetes deployment"
     },
+    "git-hero": {
+      "title": "Git Hero",
+      "description": "Fast and visual TUI for managing Git, written in Rust with Ratatui. A modern alternative to lazygit and gitui with interactive dashboard, 10 themes, i18n support, and CLI mode.",
+      "longDescription": "Git Hero is a high-performance Terminal User Interface (TUI) for managing Git repositories. It offers a visual dashboard with branch, remote, ahead/behind, file panel with change indicators, side-by-side diff, expandable commit history, and support for mouse and vim-like shortcuts. Includes 10 customizable themes, i18n (EN/ES), non-interactive CLI mode, and debug mode, all distributed via cargo, Homebrew, AUR, and snap.",
+      "feature1": "Visual dashboard with branch, remote, ahead/behind",
+      "feature2": "File panel with change indicators and side-by-side diff",
+      "feature3": "Expandable commit history with details",
+      "feature4": "10 customizable themes (Tokyo Night, Gruvbox Dark, Dracula, Nord...)",
+      "feature5": "Stage/unstage, commits, push/pull/fetch, stash, and branch management",
+      "feature6": "i18n support (English/Spanish), mouse, and vim-like shortcuts",
+      "feature7": "TUI interactive, non-interactive CLI, and debug modes"
+    },
     "logis": {
       "title": "Logis",
       "description": "[Detailed description pending — project in development]",
