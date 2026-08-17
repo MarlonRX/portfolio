@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ReactNode } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -44,7 +44,7 @@ export default function ScrollReveal({
   }
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={initial}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -56,6 +56,6 @@ export default function ScrollReveal({
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

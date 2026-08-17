@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono, Press_Start_2P, VT323, Silkscreen } from "next/font/google";
 import "./globals.css";
 
@@ -30,15 +29,6 @@ const silkscreen = Silkscreen({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "https://marlonrx.com"
-  ),
-  title: "Marlon Ramirez — Full Stack Developer",
-  description:
-    "Portfolio of Marlon Ramirez. Building robust software that drives business forward.",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,6 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${pressStart2P.variable} ${vt323.variable} ${silkscreen.variable}`}
       suppressHydrationWarning
     >

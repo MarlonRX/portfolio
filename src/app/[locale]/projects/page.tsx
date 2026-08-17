@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import type { ReactNode } from "react";
 import { getServerTranslations } from "@/lib/i18n";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/sections/ProjectCard";
@@ -42,15 +43,20 @@ export default async function ProjectsPage({
         </div>
 
         <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-          {projects.filter((p) => p.view).map((project, idx) => (
-            <ScrollReveal
-              key={project.slug}
-              delay={0.1 + idx * 0.08}
-              className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
-            >
-              <ProjectCard project={project} priority={idx < 2} />
-            </ScrollReveal>
-          ))}
+          {projects.reduce<ReactNode[]>((acc, project) => {
+            if (!project.view) return acc;
+            const idx = acc.length;
+            acc.push(
+              <ScrollReveal
+                key={project.slug}
+                delay={0.1 + idx * 0.08}
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
+              >
+                <ProjectCard project={project} priority={idx < 2} />
+              </ScrollReveal>
+            );
+            return acc;
+          }, [])}
         </div>
       </div>
     </div>

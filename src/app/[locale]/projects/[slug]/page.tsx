@@ -13,9 +13,10 @@ interface ProjectDetailPageProps {
 
 export async function generateStaticParams() {
   const { projects } = await import("@/data/projects");
-  return projects.filter((p) => p.view).map((project) => ({
-    slug: project.slug,
-  }));
+  return projects.reduce<{ slug: string }[]>((acc, project) => {
+    if (project.view) acc.push({ slug: project.slug });
+    return acc;
+  }, []);
 }
 
 export async function generateMetadata({
@@ -105,7 +106,7 @@ export default async function ProjectDetailPage({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-green-600 border-2 border-green-500 text-white font-pixel-mono text-base md:text-lg hover:bg-green-500 hover:scale-[1.02] transition-all duration-200 shadow-[0_0_15px_rgba(34,197,94,0.3)]"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-green-600 border-2 border-green-500 text-white font-pixel-mono text-base md:text-lg hover:bg-green-500 hover:scale-[1.02] transition-[background-color,transform] duration-200 shadow-[0_0_15px_rgba(34,197,94,0.3)]"
                 data-cursor-hover
               >
                 <ExternalLink size={18} />
@@ -144,7 +145,7 @@ export default async function ProjectDetailPage({
                 const translatedFeature = t.has(key) ? t(key) : feature;
                 return (
                   <li
-                    key={index}
+                    key={`${project.slug}-${index}`}
                     className="flex items-start gap-3 text-lg md:text-xl font-pixel-mono text-text-secondary leading-relaxed"
                   >
                     <span className="mt-2.5 w-1.5 h-1.5 bg-accent-primary shrink-0" />

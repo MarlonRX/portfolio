@@ -5,6 +5,67 @@ import { routing } from "@/i18n/routing";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ClientProviders from "@/components/ClientProviders";
+import { Metadata } from "next";
+import { Geist, Geist_Mono, Press_Start_2P, VT323, Silkscreen } from "next/font/google";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const pressStart2P = Press_Start_2P({
+  weight: "400",
+  variable: "--font-press-start",
+  subsets: ["latin"],
+});
+
+const vt323 = VT323({
+  weight: "400",
+  variable: "--font-vt323",
+  subsets: ["latin"],
+});
+
+const silkscreen = Silkscreen({
+  weight: ["400", "700"],
+  variable: "--font-silkscreen",
+  subsets: ["latin"],
+});
+
+const getMetadataBase = () => {
+  const url = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
+  try {
+    return new URL(url);
+  } catch {
+    throw new Error(`Invalid NEXT_PUBLIC_APP_URL: ${url}`);
+  }
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  // Example: Different titles per locale
+  const titles = {
+    en: "Marlon Ramirez — Full Stack Developer",
+    es: "Marlon Ramirez — Desarrollador Full Stack",
+  };
+
+  return {
+    metadataBase: getMetadataBase(),
+    title: titles[locale as keyof typeof titles],
+    description:
+      "Portfolio of Marlon Ramirez. Building robust software that drives business forward.",
+  };
+}
 
 export default async function LocaleLayout({
   children,

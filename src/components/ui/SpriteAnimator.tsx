@@ -11,6 +11,10 @@ interface SpriteAnimatorProps {
   className?: string;
 }
 
+interface SpriteStyle extends React.CSSProperties {
+  "--sprite-duration": string;
+}
+
 export default function SpriteAnimator({
   src,
   frameCount = 4,
@@ -23,6 +27,13 @@ export default function SpriteAnimator({
   const duration = `${frameCount / fps}s`;
   const [hasError, setHasError] = React.useState(false);
 
+  React.useEffect(() => {
+    if (!src) return;
+    const probe = new window.Image();
+    probe.onerror = () => setHasError(true);
+    probe.src = src;
+  }, [src]);
+
   // Apply a global 1.5x scale multiplier to all sprites
   const scaledWidth = Math.round(frameWidth * 1.5);
   const scaledHeight = Math.round(frameHeight * 1.5);
@@ -33,13 +44,19 @@ export default function SpriteAnimator({
     return (
       <div
         className={`inline-block select-none ${className}`}
-        style={{ width: scaledWidth, height: scaledHeight }}
+        data-sprite-animation="true"
+        style={{
+          width: scaledWidth,
+          height: scaledHeight,
+          "--sprite-duration": `${halfDuration}s`,
+        } as SpriteStyle}
       >
         <svg
           viewBox="0 0 16 16"
           width="100%"
           height="100%"
           className="text-accent-primary fill-current"
+          data-sprite-animation="true"
           style={{ imageRendering: "pixelated" }}
         >
           <style>{`
@@ -59,7 +76,7 @@ export default function SpriteAnimator({
             }
           `}</style>
           {/* Frame 1 */}
-          <g className={`invader-frame-1-${uniqueId}`}>
+          <g className={`invader-frame-1-${uniqueId}`} data-sprite-animation="true">
             {/* Row 2 */}
             <rect x="5" y="1" width="6" height="1" />
             {/* Row 3 */}
@@ -79,7 +96,7 @@ export default function SpriteAnimator({
             <rect x="13" y="5" width="1" height="2" />
           </g>
           {/* Frame 2 */}
-          <g className={`invader-frame-2-${uniqueId}`}>
+          <g className={`invader-frame-2-${uniqueId}`} data-sprite-animation="true">
             {/* Row 2 */}
             <rect x="5" y="1" width="6" height="1" />
             {/* Row 3 */}
@@ -106,10 +123,12 @@ export default function SpriteAnimator({
   return (
     <div
       className={`inline-block overflow-hidden ${className}`}
+      data-sprite-animation="true"
       style={{
         width: scaledWidth,
         height: scaledHeight,
-      }}
+        "--sprite-duration": duration,
+      } as SpriteStyle}
     >
       <style>{`
         @keyframes play-sprite-${uniqueId} {
@@ -126,15 +145,7 @@ export default function SpriteAnimator({
           animation: play-sprite-${uniqueId} ${duration} steps(${frameCount}) infinite;
         }
       `}</style>
-      <div className={`sprite-element-${uniqueId}`} />
-      {/* Hidden image to trigger loading error if the file does not exist */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        className="hidden"
-        onError={() => setHasError(true)}
-        alt=""
-      />
+      <div className={`sprite-element-${uniqueId}`} data-sprite-animation="true" />
     </div>
   );
 }

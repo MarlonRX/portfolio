@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { ArrowDown, ArrowRight } from "lucide-react";
@@ -56,7 +56,7 @@ export default function Hero() {
           </div>
 
           {/* Green Terminal Panel */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
@@ -77,7 +77,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <motion.div
+            <m.div
               style={{ y: textY, opacity: textOpacity }}
               className="w-full flex flex-col items-start justify-start text-left"
             >
@@ -102,7 +102,7 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
                 <Link
                   href={`/${locale}/projects`}
-                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 border-2 border-green-500 text-white font-pixel-mono text-sm sm:text-base md:text-lg rounded hover:bg-green-500 transition-all duration-200 hover:scale-[1.02] shadow-[0_0_15px_rgba(34,197,94,0.3)]"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 border-2 border-green-500 text-white font-pixel-mono text-sm sm:text-base md:text-lg rounded hover:bg-green-500 transition-[background-color,transform] duration-200 hover:scale-[1.02] shadow-[0_0_15px_rgba(34,197,94,0.3)]"
                   data-cursor-hover
                 >
                   {t("ctaPrimary")}
@@ -114,14 +114,14 @@ export default function Hero() {
 
                 <Link
                   href={`/${locale}/contact`}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-green-800 bg-[#061407] text-green-400 font-pixel-mono text-sm sm:text-base md:text-lg rounded hover:bg-green-950/50 hover:border-green-500 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-green-800 bg-[#061407] text-green-400 font-pixel-mono text-sm sm:text-base md:text-lg rounded hover:bg-green-950/50 hover:border-green-500 transition-colors duration-200"
                   data-cursor-hover
                 >
                   {t("ctaSecondary")}
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* Float Sprite 2: Bottom-Right of the panel (e.g. Companion pet placeholder) */}
           <div className="absolute -bottom-8 -right-8 z-20 pointer-events-none">
@@ -150,20 +150,20 @@ export default function Hero() {
         </div>
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.7 }}
         style={{ y: arrowY }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <motion.div
+        <m.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
           <ArrowDown size={24} className="text-text-muted" />
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

@@ -81,7 +81,7 @@ export default async function ContactPage({
                 <a
                   key={link.name}
                   href={link.href}
-                  className="group flex items-center gap-4 p-4 rounded-lg border border-border-subtle hover:border-border-default hover:bg-bg-elevated transition-all duration-200"
+                  className="group flex items-center gap-4 p-4 rounded-lg border border-border-subtle hover:border-border-default hover:bg-bg-elevated transition-colors duration-200"
                   data-cursor-hover
                 >
                   <div className="p-2.5 rounded-lg bg-accent-secondary/10 text-accent-secondary group-hover:text-accent-secondary-hover transition-colors">

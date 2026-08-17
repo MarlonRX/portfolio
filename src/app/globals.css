@@ -134,14 +134,21 @@ span[class*="bg-accent-"],
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *:not([data-sprite-animation]),
+  *:not([data-sprite-animation])::before,
+  *:not([data-sprite-animation])::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Sprite sheets must keep their frame timing even when the OS requests reduced motion. */
+[data-sprite-animation],
+[data-sprite-animation] * {
+  animation-duration: var(--sprite-duration) !important;
+  animation-iteration-count: infinite !important;
 }
 
 /* --- Retro 8-bit Utilities --- */

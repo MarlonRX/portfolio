@@ -12,17 +12,17 @@ interface ProjectCardProps {
   priority?: boolean;
 }
 
+const statusColors = {
+  production: "bg-success/10 text-success border-success/20",
+  development: "bg-warning/10 text-warning border-warning/20",
+  planned: "bg-accent-secondary/10 text-accent-secondary border-accent-secondary/20",
+};
+
 export default function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const locale = useLocale();
   const t = useTranslations("projects");
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const statusColors = {
-    production: "bg-success/10 text-success border-success/20",
-    development: "bg-warning/10 text-warning border-warning/20",
-    planned: "bg-accent-secondary/10 text-accent-secondary border-accent-secondary/20",
-  };
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -41,7 +41,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
 
   return (
     <article
-      className="group h-full rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 relative"
+      className="group h-full rounded-xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       data-cursor-hover

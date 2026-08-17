@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -16,7 +16,7 @@ export default function FeaturedProjects() {
   return (
     <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -29,11 +29,11 @@ export default function FeaturedProjects() {
           <p className="text-text-secondary max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="flex flex-wrap justify-center gap-6 md:gap-8">
           {featuredProjects.map((project, index) => (
-            <motion.div
+            <m.div
               key={project.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -42,11 +42,11 @@ export default function FeaturedProjects() {
               className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
             >
               <ProjectCard project={project} priority={index < 2} />
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -63,7 +63,7 @@ export default function FeaturedProjects() {
               className="group-hover:translate-x-1 transition-transform"
             />
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

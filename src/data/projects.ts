@@ -2,12 +2,12 @@ import { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
-    slug: "cashpilot",
-    title: "CashPilot",
+    slug: "nodovec",
+    title: "NodoVec",
     description:
     "Software de gestión financiera personal con dashboard analytics, gestión de tarjetas de crédito, compras a cuotas, multi-moneda y ocho temas visuales.",
     longDescription:
-    "CashPilot es una solución integral de gestión financiera personal que permite a los usuarios trackear sus transacciones, gestionar tarjetas de crédito, realizar compras a cuotas, y visualizar métricas financieras a través de un dashboard completo con múltiples librerías de gráficos.",
+      "NodoVec es una solución integral de gestión financiera personal que permite a los usuarios trackear sus transacciones, gestionar tarjetas de crédito, realizar compras a cuotas, y visualizar métricas financieras a través de un dashboard completo con múltiples librerías de gráficos.",
     status: "production",
     techStack: [
       "Astro 5",
@@ -28,10 +28,10 @@ export const projects: Project[] = [
       "Autenticación JWT con 2FA",
       "Deployment production-ready con Kubernetes",
     ],
-    liveUrl: "https://cashpilot-web-production.up.railway.app",
-    repoUrl: "https://github.com/MarlonRX/cash_pilot_frontend",
-    video: "/videos/projects/cashpilot.mp4",
-    image: "/images/projects/cashpilot-hero.webp",
+    liveUrl: "https://nodovec-web-production.up.railway.app",
+    repoUrl: "https://github.com/MarlonRX/nodovec_frontend",
+    video: "/videos/projects/nodovec-promo.webm",
+    image: "/images/projects/nodovec-hero.webp",
     view: true,
   },
   {
@@ -54,8 +54,8 @@ export const projects: Project[] = [
     ],
     repoUrl: "https://github.com/MarlonRX/git-hero",
     liveUrl: "https://github.com/MarlonRX/git-hero",
-    video: "/videos/projects/git-hero.mp4",
-    image: "/images/projects/git-hero-hero.webp",
+    video: "/videos/projects/git-hero-promo.webm",
+    image: "/images/projects/git-hero.webp",
     view: true,
   },
   {

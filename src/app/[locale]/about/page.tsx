@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { getServerTranslations } from "@/lib/i18n";
 import { Code2, Server, Wrench } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
@@ -56,12 +57,13 @@ export default async function AboutPage({
         <ScrollReveal>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-10 mb-16">
             <div className="shrink-0 w-64 h-64 pixel-border crt-screen bg-bg-elevated overflow-hidden relative">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/sprites/avatar-pixelated.png"
                 alt="Marlon Ramirez"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 style={{ imageRendering: "pixelated" }}
+                sizes="256px"
               />
             </div>
 

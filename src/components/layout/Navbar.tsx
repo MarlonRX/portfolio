@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import LocaleSwitcher from "./LocaleSwitcher";
@@ -50,7 +50,7 @@ export default function Navbar() {
               >
                 {t(link.labelKey)}
                 {isActive(link.href) && (
-                  <motion.span
+                  <m.span
                     layoutId="navbar-active"
                     className="absolute -bottom-1 left-0 right-0 h-px bg-accent-primary"
                   />
@@ -75,10 +75,11 @@ export default function Navbar() {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+          <m.div
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="md:hidden bg-bg-base/95 backdrop-blur-md border-b border-border-subtle overflow-hidden"
           >
             <div className="px-4 py-4 space-y-3">
@@ -97,7 +98,7 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>
