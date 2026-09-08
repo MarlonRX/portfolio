@@ -59,6 +59,29 @@ export const projects: Project[] = [
     view: true,
   },
   {
+    slug: "vitrina",
+    title: "Vitrina",
+    description:
+      "Demo de e-commerce full-stack con catálogo, filtros y carrito sobre Next.js 16 y la Shopify Storefront API, lista para conmutar a una tienda real.",
+    longDescription:
+      "Vitrina es una tienda de demostración portafolio que replica la experiencia completa de un e-commerce: catálogo de productos con búsqueda y filtros, página de detalle, carrito de compras y checkout embebido, alimentada por la Shopify Storefront API mediante Hydrogen React. Construida con Next.js 16 App Router, Tailwind CSS v4 y next-intl para internacionalización ES/EN, con diseño editorial sobrio (borgoña + marfil). Sin pagos reales: al sustituir credenciales de una tienda, el proyecto pasa a producción sin reescribir código.",
+    status: "production",
+    techStack: ["Next.js 16", "Shopify Storefront API", "Hydrogen React", "Tailwind CSS v4", "next-intl", "TypeScript"],
+    features: [
+      "Catálogo con búsqueda, filtros y ordenación",
+      "Carrito de compras con estado global",
+      "Integración Shopify Storefront (GraphQL) desacoplada",
+      "Internacionalización español/inglés",
+      "Diseño editorial con paleta borgoña y marfil",
+      "Listo para conmutar a una tienda real con credenciales",
+    ],
+    liveUrl: "https://vitrina-kohl.vercel.app",
+    repoUrl: "https://github.com/MarlonRX/vitrina",
+    video: "/videos/projects/vitrina-promo.webm",
+    image: "/images/projects/vitrina-hero.webp",
+    view: true,
+  },
+  {
     slug: "logis",
     title: "Logis",
     image: "/images/projects/logis-hero.webp",
