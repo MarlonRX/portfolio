@@ -57,7 +57,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-parchment/55 transition-colors hover:text-parchment"
+              className="text-parchment/70 transition-colors hover:text-parchment"
             >
               <Code2 size={18} />
             </a>
@@ -66,7 +66,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-parchment/55 transition-colors hover:text-parchment"
+              className="text-parchment/70 transition-colors hover:text-parchment"
             >
               <Briefcase size={18} />
             </a>
