@@ -31,12 +31,12 @@ export default async function ProjectsPage({
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <ScrollReveal>
-            <h1 className="text-5xl md:text-6xl font-pixel-title tracking-tight text-text-primary mb-4">
+            <h1 className="text-4xl md:text-5xl text-text-primary mb-4">
               {t("title")}
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-text-secondary text-xl md:text-2xl max-w-3xl leading-relaxed">
+            <p className="text-text-secondary text-lg md:text-xl max-w-3xl leading-relaxed">
               {t("subtitle")}
             </p>
           </ScrollReveal>

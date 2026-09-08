@@ -7,51 +7,35 @@ export const size = {
 
 export const contentType = "image/png";
 
+// Identidad F: monograma MR navy sobre blanco, punto dorado
 export default function AppleIcon() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #0a0a0f 0%, #13131a 100%)",
+          background: "#ffffff",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: "32px",
-          border: "1px solid rgba(34, 197, 94, 0.25)",
+          borderRadius: "40px",
+          border: "1px solid rgba(50, 50, 93, 0.12)",
         }}
       >
-        <svg
-          viewBox="0 0 8 8"
+        <div
           style={{
-            width: "110px",
-            height: "110px",
             display: "flex",
+            alignItems: "baseline",
+            color: "#061b31",
+            fontSize: "74px",
+            fontWeight: 600,
+            letterSpacing: "-3px",
+            fontFamily: "sans-serif",
           }}
         >
-          <g style={{ fill: "#22c55e" }}>
-            {/* Horns */}
-            <rect x="1" y="0" width="1" height="1" />
-            <rect x="6" y="0" width="1" height="1" />
-            {/* Row 1 */}
-            <rect x="2" y="1" width="4" height="1" />
-            {/* Row 2 */}
-            <rect x="1" y="2" width="6" height="1" />
-            {/* Row 3 (Eyes) */}
-            <rect x="0" y="3" width="2" height="1" />
-            <rect x="3" y="3" width="2" height="1" />
-            <rect x="6" y="3" width="2" height="1" />
-            {/* Row 4 */}
-            <rect x="0" y="4" width="8" height="1" />
-            {/* Row 5 */}
-            <rect x="1" y="5" width="6" height="1" />
-            {/* Row 6 */}
-            <rect x="1" y="6" width="1" height="2" />
-            <rect x="3" y="6" width="2" height="1" />
-            <rect x="6" y="6" width="1" height="2" />
-          </g>
-        </svg>
+          MR<span style={{ color: "#d4af37", fontSize: "84px" }}>.</span>
+        </div>
       </div>
     ),
     { ...size }
