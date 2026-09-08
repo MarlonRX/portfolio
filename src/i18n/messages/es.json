@@ -19,7 +19,12 @@
       "sub": "De dashboards financieros en producción a herramientas de terminal escritas en Rust. Interfaces precisas, APIs sólidas, despliegues que no despiertan a nadie.",
       "name": "Marlon Ramirez",
       "taglinePrefix": "Diseño y construyo ",
-      "taglineWords": ["software de alto rendimiento.", "sistemas distribuidos.", "soluciones escalables.", "aplicaciones eficientes."],
+      "taglineWords": [
+        "software de alto rendimiento.",
+        "sistemas distribuidos.",
+        "soluciones escalables.",
+        "aplicaciones eficientes."
+      ],
       "taglineSuffix": "",
       "ctaPrimary": "Ver proyectos",
       "ctaSecondary": "Contactar"
@@ -47,17 +52,6 @@
       "back": "Volver a proyectos",
       "detail": "Ver detalle"
     },
-    "cashpilot": {
-      "title": "CashPilot",
-      "description": "Software de gestión financiera personal con dashboard analytics, gestión de tarjetas de crédito, compras a cuotas, multi-moneda y ocho temas visuales.",
-      "longDescription": "CashPilot es una solución integral de gestión financiera personal que permite a los usuarios trackear sus transacciones, gestionar tarjetas de crédito, realizar compras a cuotas, y visualizar métricas financieras a través de un dashboard completo con múltiples librerías de gráficos.",
-      "feature1": "Dashboard analytics con múltiples librerías de gráficos",
-      "feature2": "Gestión de tarjetas de crédito y compras a cuotas",
-      "feature3": "Sistema de roles y permisos granular (RBAC)",
-      "feature4": "Ocho temas visuales personalizables",
-      "feature5": "Autenticación JWT con 2FA",
-      "feature6": "Deployment production-ready con Kubernetes"
-    },
     "git-hero": {
       "title": "Git Hero",
       "description": "TUI rápida y visual para gestionar Git, escrita en Rust con Ratatui. Alternativa moderna a lazygit y gitui con dashboard interactivo, 10 temas, soporte i18n y modo CLI.",
@@ -83,6 +77,28 @@
       "feature1": "[Por definir]",
       "feature2": "[Por definir]",
       "feature3": "[Por definir]"
+    },
+    "nodovec": {
+      "title": "NodoVec",
+      "description": "Software de gestión financiera personal con dashboard analytics, gestión de tarjetas de crédito, compras a cuotas, multi-moneda y ocho temas visuales.",
+      "longDescription": "NodoVec es una solución integral de gestión financiera personal que permite a los usuarios trackear sus transacciones, gestionar tarjetas de crédito, realizar compras a cuotas, y visualizar métricas financieras a través de un dashboard completo con múltiples librerías de gráficos.",
+      "feature1": "Dashboard analytics con múltiples librerías de gráficos",
+      "feature2": "Gestión de tarjetas de crédito y compras a cuotas",
+      "feature3": "Sistema de roles y permisos granular (RBAC)",
+      "feature4": "Ocho temas visuales personalizables",
+      "feature5": "Autenticación JWT con 2FA",
+      "feature6": "Deployment production-ready con Kubernetes"
+    },
+    "vitrina": {
+      "title": "Vitrina",
+      "description": "Demo de e-commerce full-stack con catálogo, filtros y carrito sobre Next.js 16 y la Shopify Storefront API, lista para conmutar a una tienda real.",
+      "longDescription": "Vitrina es una tienda de demostración portafolio que replica la experiencia completa de un e-commerce: catálogo de productos con búsqueda y filtros, página de detalle, carrito de compras y checkout embebido, alimentada por la Shopify Storefront API mediante Hydrogen React. Construida con Next.js 16 App Router, Tailwind CSS v4 y next-intl para internacionalización ES/EN, con diseño editorial sobrio (borgoña + marfil). Sin pagos reales: al sustituir credenciales de una tienda, el proyecto pasa a producción sin reescribir código.",
+      "feature1": "Catálogo con búsqueda, filtros y ordenación",
+      "feature2": "Carrito de compras con estado global",
+      "feature3": "Integración Shopify Storefront (GraphQL) desacoplada",
+      "feature4": "Internacionalización español/inglés",
+      "feature5": "Diseño editorial con paleta borgoña y marfil",
+      "feature6": "Listo para conmutar a una tienda real con credenciales"
     }
   },
   "about": {

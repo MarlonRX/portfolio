@@ -24,11 +24,18 @@ export async function generateMetadata({
 }: ProjectDetailPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getServerTranslations(locale, "meta");
+  const tp = await getServerTranslations(locale, "projects");
   const project = getProjectBySlug(slug);
   if (!project) return { title: t("notFound.projectTitle") };
+  const title = tp.has(`${project.slug}.title`)
+    ? tp(`${project.slug}.title`)
+    : project.title;
+  const description = tp.has(`${project.slug}.description`)
+    ? tp(`${project.slug}.description`)
+    : project.description;
   return {
-    title: `${project.title} — Marlon Ramirez`,
-    description: project.description,
+    title: `${title} — Marlon Ramirez`,
+    description,
   };
 }
 
