@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ClientProviders from "@/components/ClientProviders";
 import { Metadata } from "next";
-import { Geist, Geist_Mono, Press_Start_2P, VT323, Silkscreen } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,24 +15,6 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const pressStart2P = Press_Start_2P({
-  weight: "400",
-  variable: "--font-press-start",
-  subsets: ["latin"],
-});
-
-const vt323 = VT323({
-  weight: "400",
-  variable: "--font-vt323",
-  subsets: ["latin"],
-});
-
-const silkscreen = Silkscreen({
-  weight: ["400", "700"],
-  variable: "--font-silkscreen",
   subsets: ["latin"],
 });
 

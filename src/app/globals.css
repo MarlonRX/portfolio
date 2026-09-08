@@ -1,39 +1,57 @@
 @import "tailwindcss";
 
+/* ── Identidad F — Fintech premium claro (Stripe-like) ──────────────
+   Lienzo blanco, tinta navy, dorado como puntuación mínima,
+   sombras teñidas de azul y hairlines casi invisibles.          */
 @theme inline {
-  --color-bg-base: #0a0a0f;
-  --color-bg-surface: #13131a;
-  --color-bg-elevated: #1a1a22;
-  --color-bg-overlay: rgba(10, 10, 15, 0.8);
+  /* Superficies */
+  --color-bg-base: #ffffff;
+  --color-bg-surface: #fafafa;
+  --color-bg-elevated: #f2f4f7;
+  --color-navy-band: #061b31;
+  --color-parchment: #f5f3ee;
 
-  --color-accent-primary: #d4af37;
-  --color-accent-primary-hover: #c9a632;
-  --color-accent-secondary: #4f8cff;
-  --color-accent-secondary-hover: #3b73d6;
+  /* Acentos */
+  --color-accent-primary: #d4af37;          /* latón — solo 3 usos */
+  --color-accent-primary-hover: #b8952e;
+  --color-accent-secondary: #061b31;        /* navy — links e iconos */
+  --color-accent-secondary-hover: #13324f;
 
-  --color-text-primary: #f0f0f5;
-  --color-text-secondary: #a0a0b0;
-  --color-text-muted: #6b6b7b;
-  --color-text-inverted: #0a0a0f;
+  /* Texto */
+  --color-text-primary: #061b31;
+  --color-text-secondary: #3d4d5c;
+  --color-text-muted: #6b7a88;
+  --color-text-inverted: #ffffff;
 
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
-  --color-border-default: rgba(255, 255, 255, 0.1);
-  --color-border-focus: #4f8cff;
+  /* Bordes: hairlines teñidos de azul (la firma) */
+  --color-border-subtle: rgba(50, 50, 93, 0.09);
+  --color-border-default: rgba(50, 50, 93, 0.16);
+  --color-border-focus: hsla(212, 100%, 48%, 1);
 
-  --color-success: #2e8b57;
-  --color-warning: #ffb74d;
-  --color-error: #cf6679;
+  /* Semánticos suavizados para lienzo claro */
+  --color-success: #1a7f4b;
+  --color-warning: #b26a00;
+  --color-error: #b3261e;
 
+  /* Tipografía: sans + mono, nada de pixel */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-pixel-title: var(--font-silkscreen);
-  --font-pixel-press-start: var(--font-press-start);
-  --font-pixel-mono: var(--font-vt323);
 
+  /* Escala de radios */
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+
+  /* Sombra-as-borde multicapa, teñida de azul */
+  --shadow-border: 0 0 0 1px rgba(50, 50, 93, 0.08);
+  --shadow-card: 0 0 0 1px rgba(50, 50, 93, 0.07),
+    0 2px 4px rgba(50, 50, 93, 0.06), 0 12px 28px -8px rgba(50, 50, 93, 0.14);
+  --shadow-card-hover: 0 0 0 1px rgba(50, 50, 93, 0.08),
+    0 8px 16px rgba(50, 50, 93, 0.1), 0 24px 48px -12px rgba(6, 27, 49, 0.2);
+  --shadow-float: 0 0 0 1px rgba(50, 50, 93, 0.08),
+    0 24px 48px -12px rgba(6, 27, 49, 0.28),
+    0 8px 16px -8px rgba(50, 50, 93, 0.12);
 }
 
 html {
@@ -44,153 +62,133 @@ body {
   background-color: var(--color-bg-base);
   color: var(--color-text-primary);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "liga";
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Encabezados, botones, tags, badges y controles globales con identidad 8-bits */
-h1, h2 {
-  font-family: var(--font-pixel-title), var(--font-mono), sans-serif;
-  font-weight: 700;
+/* Jerarquía tipográfica: peso liviano en display, tracking negativo */
+h1 {
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
 }
 
-h3, h4, h5, h6, 
-button, 
-select, 
-input, 
-textarea,
-a[class*="px-"],
-a[class*="py-"],
-a[class*="p-"],
-a[class*="inline-flex"],
-span[class*="px-"],
-span[class*="py-"],
-span[class*="bg-accent-"],
-.font-mono {
-  font-family: var(--font-pixel-mono), var(--font-mono), monospace;
+h2 {
+  font-weight: 300;
+  letter-spacing: -0.028em;
+  line-height: 1.15;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }
 
 ::selection {
-  background-color: rgba(212, 175, 55, 0.3);
+  background-color: rgba(212, 175, 55, 0.25);
   color: var(--color-text-primary);
 }
 
-/* Custom scrollbar */
+/* Focus accesible: anillo azul saturado, no dorado */
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Scrollbar discreta sobre lienzo claro */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-surface);
+  background: var(--color-bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3a3a45;
-  border-radius: 4px;
+  background: rgba(50, 50, 93, 0.22);
+  border-radius: 5px;
+  border: 2px solid var(--color-bg-base);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #50505a;
+  background: rgba(50, 50, 93, 0.38);
 }
 
-/* Noise texture overlay */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0.007;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+/* Etiqueta técnica: mono en mayúsculas, tracking amplio */
+.tech-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
-/* Glow border effect for cards */
-.glow-border {
-  background: conic-gradient(
-    from var(--glow-angle, 0deg),
-    transparent 0%,
-    rgba(212, 175, 55, 0.4) 20%,
-    rgba(79, 140, 255, 0.4) 40%,
-    transparent 60%,
-    transparent 100%
-  );
-  animation: glow-rotate 4s linear infinite;
-  border-radius: inherit;
+/* Pill F — badge de stack/habilidades/estado */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  box-shadow: inset 0 0 0 1px var(--color-border-subtle);
 }
 
-@property --glow-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+/* Botones del sistema */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;
+  background: var(--color-navy-band);
+  color: var(--color-text-inverted);
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(50, 50, 93, 0.22),
+    0 2px 5px rgba(50, 50, 93, 0.12);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-@keyframes glow-rotate {
-  from {
-    --glow-angle: 0deg;
-  }
-  to {
-    --glow-angle: 360deg;
-  }
+.btn-primary:hover {
+  box-shadow: 0 3px 9px rgba(50, 50, 93, 0.28),
+    0 8px 24px rgba(50, 50, 93, 0.16);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  box-shadow: inset 0 0 0 1px rgba(50, 50, 93, 0.18);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: var(--color-bg-surface);
+  box-shadow: inset 0 0 0 1px rgba(50, 50, 93, 0.32);
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *:not([data-sprite-animation]),
-  *:not([data-sprite-animation])::before,
-  *:not([data-sprite-animation])::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-/* Sprite sheets must keep their frame timing even when the OS requests reduced motion. */
-[data-sprite-animation],
-[data-sprite-animation] * {
-  animation-duration: var(--sprite-duration) !important;
-  animation-iteration-count: infinite !important;
-}
-
-/* --- Retro 8-bit Utilities --- */
-
-/* Pixel Art Border (Efecto borde de bloques de pixel) */
-.pixel-border {
-  border: 4px solid var(--color-border-default);
-  box-shadow: 
-    0 -4px 0 -2px var(--color-bg-base), 0 4px 0 -2px var(--color-bg-base),
-    -4px 0 0 -2px var(--color-bg-base), 4px 0 0 -2px var(--color-bg-base),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.04);
-  position: relative;
-}
-
-/* Efecto de Pantalla CRT con Scanlines */
-.crt-screen {
-  position: relative;
-  overflow: hidden;
-}
-
-.crt-screen::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.25) 50%
-  );
-  background-size: 100% 4px;
-  z-index: 20;
-  pointer-events: none;
-  opacity: 0.45;
-}
-
-/* Retro arcade blinking cursor / element */
-.retro-blink {
-  animation: retro-blink 1s steps(2, start) infinite;
-}
-
-@keyframes retro-blink {
-  to {
-    visibility: hidden;
   }
 }
