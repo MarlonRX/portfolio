@@ -31,7 +31,7 @@ export default function Footer() {
               </p>
             </div>
             <Link
-              href="mailto:mramirezce14@gmail.com"
+              href="mailto:mramirezce1420@gmail.com"
               className="inline-flex items-center gap-2 rounded-full bg-accent-primary px-6 py-3 text-[15px] font-medium text-navy-band transition-[transform,box-shadow] duration-200 hover:-translate-y-px"
               style={{
                 boxShadow:
@@ -39,7 +39,7 @@ export default function Footer() {
               }}
             >
               <Mail size={16} />
-              mramirezce14@gmail.com
+              mramirezce1420@gmail.com
             </Link>
           </div>
         </ScrollReveal>

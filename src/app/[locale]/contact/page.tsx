@@ -31,9 +31,9 @@ const contactLinks = [
   },
   {
     name: "Email",
-    href: "mailto:mramirezce14@gmail.com",
+    href: "mailto:mramirezce1420@gmail.com",
     icon: <Mail size={20} />,
-    handle: "mramirezce14@gmail.com",
+    handle: "mramirezce1420@gmail.com",
   },
 ];
 
