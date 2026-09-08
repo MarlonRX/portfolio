@@ -13,9 +13,9 @@ interface ProjectCardProps {
 }
 
 const statusColors = {
-  production: "bg-success/10 text-success border-success/20",
-  development: "bg-warning/10 text-warning border-warning/20",
-  planned: "bg-accent-secondary/10 text-accent-secondary border-accent-secondary/20",
+  production: "bg-success/8 text-success",
+  development: "bg-warning/10 text-warning",
+  planned: "bg-accent-secondary/6 text-text-muted",
 };
 
 export default function ProjectCard({ project, priority = false }: ProjectCardProps) {
@@ -41,20 +41,13 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
 
   return (
     <article
-      className="group h-full rounded-xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 relative"
+      className="group h-full overflow-hidden rounded-2xl bg-bg-base shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      data-cursor-hover
     >
-      {/* Animated glow border */}
-      <div className="absolute -inset-[1px] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
-        <div className="absolute inset-0 rounded-xl glow-border" />
-      </div>
-
-      {/* Card content */}
-      <div className="relative z-10 h-full flex flex-col bg-bg-surface border border-border-subtle rounded-xl overflow-hidden group-hover:border-border-default transition-colors duration-300">
+      <div className="relative z-10 flex h-full flex-col">
         {/* Media area - large image/video */}
-        <div className="relative aspect-[16/10] bg-bg-elevated overflow-hidden">
+        <div className="relative aspect-[16/10] overflow-hidden bg-bg-elevated">
           {/* Image / Fallback */}
           <div className={`absolute inset-0 transition-opacity duration-500 ${isHovered ? "opacity-0" : "opacity-100"}`}>
             <ImageWithFallback
@@ -84,25 +77,25 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
                 className="w-full h-full object-cover"
               />
               {/* Play indicator */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                <div className="w-12 h-12 rounded-full bg-accent-primary/90 flex items-center justify-center">
-                  <Play size={20} className="text-text-inverted ml-0.5" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-primary shadow-[0_2px_8px_rgba(212,175,55,0.35),0_8px_24px_rgba(6,27,49,0.25)]">
+                  <Play size={20} className="ml-0.5 text-text-inverted" />
                 </div>
               </div>
             </div>
           )}
 
           {/* Status badge */}
-          <div className="absolute top-4 left-4 z-10">
+          <div className="absolute left-4 top-4 z-10">
             <span
-              className={`inline-flex px-3 py-1 text-xs font-pixel-mono border ${statusColors[project.status]}`}
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11.5px] font-medium ${statusColors[project.status]}`}
             >
+              {project.status === "production" && (
+                <span className="h-1.5 w-1.5 rounded-full bg-current" />
+              )}
               {t(`status.${project.status}`)}
             </span>
           </div>
-
-          {/* Hover overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-surface via-transparent to-transparent opacity-60 pointer-events-none" />
         </div>
 
         <div className="p-8 flex flex-col flex-1">
@@ -110,7 +103,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
             href={`/${locale}/projects/${project.slug}`}
             className="block"
           >
-            <h3 className="text-2xl md:text-3xl font-pixel-title text-text-primary mb-3 group-hover:text-accent-primary transition-colors">
+            <h3 className="mb-3 text-xl md:text-2xl font-medium text-text-primary transition-colors group-hover:text-accent-secondary">
               {t.has(`${project.slug}.title`) ? t(`${project.slug}.title`) : project.title}
             </h3>
           </Link>
@@ -119,31 +112,28 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
             {t.has(`${project.slug}.description`) ? t(`${project.slug}.description`) : project.description}
           </p>
 
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="mb-6 flex flex-wrap gap-2">
             {project.techStack.slice(0, 4).map((tech) => (
-              <span
-                key={tech}
-                className="inline-flex px-3 py-1 text-sm font-pixel-mono text-accent-secondary bg-accent-secondary/10 border border-accent-secondary/20"
-              >
+              <span key={tech} className="pill">
                 {tech}
               </span>
             ))}
             {project.techStack.length > 4 && (
-              <span className="inline-flex px-2 py-1 text-xs font-pixel-mono text-text-muted">
+              <span className="tech-label self-center pl-1 normal-case tracking-normal">
                 +{project.techStack.length - 4}
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-4 pt-5 border-t border-border-subtle mt-auto">
+          <div className="mt-auto flex items-center gap-4 border-t border-border-subtle pt-5">
             <Link
               href={`/${locale}/projects/${project.slug}`}
-              className="inline-flex items-center gap-2 text-lg md:text-xl font-pixel-mono text-accent-secondary hover:text-accent-secondary-hover transition-colors group/link"
+              className="inline-flex items-center gap-2 text-[15px] font-medium text-accent-secondary transition-colors group/link"
             >
               {t("links.detail")}
               <ArrowRight
                 size={16}
-                className="group-hover/link:translate-x-1 transition-transform"
+                className="transition-transform group-hover/link:translate-x-1"
               />
             </Link>
 
@@ -152,7 +142,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 text-text-muted hover:text-accent-secondary transition-colors"
+                className="ml-auto p-2 text-text-muted transition-colors hover:text-accent-secondary"
                 aria-label={t("links.live")}
               >
                 <ExternalLink size={18} />

@@ -8,6 +8,10 @@ export const config = {
   // - /api routes
   // - /_next (Next.js internals)
   // - /_vercel (Vercel internals)
+  // - metadata routes (icon, apple-icon) — no tienen extensión y caerían
+  //   en la redirección de locale (307 → /en/icon → 404)
   // - all root files inside /public (e.g. /favicon.ico)
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: [
+    "/((?!api|_next|_vercel|icon|apple-icon|favicon\\.ico|robots\\.txt|sitemap\\.xml|.*\\..*).*)",
+  ],
 };

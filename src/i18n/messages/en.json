@@ -7,14 +7,24 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "builtWith": "Built with"
+    "builtWith": "Built with",
+    "contactLabel": "Contact",
+    "contactTitle": "Shall we build something well-made?",
+    "contactBlurb": "I reply within 24 hours."
   },
   "home": {
     "hero": {
       "greeting": "Hi, I'm",
+      "eyebrow": "Full-stack software engineering",
+      "sub": "From financial dashboards in production to terminal tools written in Rust. Precise interfaces, solid APIs, deploys that don't wake anyone up.",
       "name": "Marlon Ramirez",
       "taglinePrefix": "I design and build ",
-      "taglineWords": ["high-performance software.", "distributed systems.", "scalable solutions.", "efficient applications."],
+      "taglineWords": [
+        "high-performance software.",
+        "distributed systems.",
+        "scalable solutions.",
+        "efficient applications."
+      ],
       "taglineSuffix": "",
       "ctaPrimary": "View projects",
       "ctaSecondary": "Get in touch"
@@ -42,17 +52,6 @@
       "back": "Back to projects",
       "detail": "View details"
     },
-    "cashpilot": {
-      "title": "CashPilot",
-      "description": "Personal financial management software with dashboard analytics, credit card management, installment purchases, multi-currency support, and eight visual themes.",
-      "longDescription": "CashPilot is a comprehensive personal financial management solution that allows users to track their transactions, manage credit cards, perform installment purchases, and visualize financial metrics through a complete dashboard with multiple charting libraries.",
-      "feature1": "Dashboard analytics with multiple chart libraries",
-      "feature2": "Credit card and installment purchase management",
-      "feature3": "Granular role-based access control (RBAC)",
-      "feature4": "Eight customizable visual themes",
-      "feature5": "JWT authentication with 2FA",
-      "feature6": "Production-ready Kubernetes deployment"
-    },
     "git-hero": {
       "title": "Git Hero",
       "description": "Fast and visual TUI for managing Git, written in Rust with Ratatui. A modern alternative to lazygit and gitui with interactive dashboard, 10 themes, i18n support, and CLI mode.",
@@ -78,6 +77,28 @@
       "feature1": "[To be defined]",
       "feature2": "[To be defined]",
       "feature3": "[To be defined]"
+    },
+    "nodovec": {
+      "title": "NodoVec",
+      "description": "Personal financial management software with dashboard analytics, credit card management, installment purchases, multi-currency support, and eight visual themes.",
+      "longDescription": "NodoVec is a comprehensive personal financial management solution that allows users to track their transactions, manage credit cards, perform installment purchases, and visualize financial metrics through a complete dashboard with multiple charting libraries.",
+      "feature1": "Dashboard analytics with multiple chart libraries",
+      "feature2": "Credit card and installment purchase management",
+      "feature3": "Granular role-based access control (RBAC)",
+      "feature4": "Eight customizable visual themes",
+      "feature5": "JWT authentication with 2FA",
+      "feature6": "Production-ready Kubernetes deployment"
+    },
+    "vitrina": {
+      "title": "Vitrina",
+      "description": "Full-stack e-commerce demo with catalog, filters and cart built on Next.js 16 and the Shopify Storefront API, ready to switch to a real store.",
+      "longDescription": "Vitrina is a portfolio demo store that replicates the complete e-commerce experience: product catalog with search and filters, detail page, shopping cart and embedded checkout, powered by the Shopify Storefront API through Hydrogen React. Built with Next.js 16 App Router, Tailwind CSS v4 and next-intl for ES/EN internationalization, with a sober editorial design (burgundy + ivory). No real payments: swapping in a store's credentials takes the project to production without rewriting code.",
+      "feature1": "Catalog with search, filters and sorting",
+      "feature2": "Shopping cart with global state",
+      "feature3": "Decoupled Shopify Storefront (GraphQL) integration",
+      "feature4": "Spanish/English internationalization",
+      "feature5": "Editorial design with burgundy and ivory palette",
+      "feature6": "Ready to switch to a real store with credentials"
     }
   },
   "about": {

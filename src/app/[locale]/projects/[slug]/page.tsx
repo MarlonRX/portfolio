@@ -24,11 +24,18 @@ export async function generateMetadata({
 }: ProjectDetailPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getServerTranslations(locale, "meta");
+  const tp = await getServerTranslations(locale, "projects");
   const project = getProjectBySlug(slug);
   if (!project) return { title: t("notFound.projectTitle") };
+  const title = tp.has(`${project.slug}.title`)
+    ? tp(`${project.slug}.title`)
+    : project.title;
+  const description = tp.has(`${project.slug}.description`)
+    ? tp(`${project.slug}.description`)
+    : project.description;
   return {
-    title: `${project.title} — Marlon Ramirez`,
-    description: project.description,
+    title: `${title} — Marlon Ramirez`,
+    description,
   };
 }
 
@@ -54,7 +61,7 @@ export default async function ProjectDetailPage({
         <ScrollReveal>
           <Link
             href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 text-base md:text-lg font-pixel-mono text-text-secondary hover:text-text-primary transition-colors mb-8"
+            className="mb-8 inline-flex items-center gap-2 text-[15px] text-text-secondary transition-colors hover:text-text-primary"
           >
             <ArrowLeft size={16} />
             {t("links.back")}
@@ -62,7 +69,7 @@ export default async function ProjectDetailPage({
         </ScrollReveal>
 
         <ScrollReveal delay={0.05}>
-          <div className="aspect-video bg-bg-elevated pixel-border crt-screen overflow-hidden mb-10 relative">
+          <div className="relative mb-10 aspect-video overflow-hidden rounded-2xl bg-bg-elevated shadow-[var(--shadow-float)]">
             {project.video ? (
               <video
                 src={project.video}
@@ -88,29 +95,38 @@ export default async function ProjectDetailPage({
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <h1 className="text-5xl md:text-6xl font-pixel-title tracking-tight text-text-primary mb-6">
+          <h1 className="text-4xl md:text-5xl text-text-primary mb-6">
             {projectTitle}
           </h1>
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-          <p className="text-xl md:text-2xl font-pixel-mono text-text-secondary leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8">
             {projectLongDesc}
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="flex flex-wrap items-center gap-3 mb-10">
+          <div className="mb-12 flex flex-wrap items-center gap-3">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-green-600 border-2 border-green-500 text-white font-pixel-mono text-base md:text-lg hover:bg-green-500 hover:scale-[1.02] transition-[background-color,transform] duration-200 shadow-[0_0_15px_rgba(34,197,94,0.3)]"
-                data-cursor-hover
+                className="btn-primary px-6 py-3 text-[15px]"
               >
-                <ExternalLink size={18} />
+                <ExternalLink size={16} />
                 {t("links.live")}
+              </a>
+            )}
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost px-6 py-3 text-[15px]"
+              >
+                {t("links.repo")}
               </a>
             )}
           </div>
@@ -118,14 +134,14 @@ export default async function ProjectDetailPage({
 
         <ScrollReveal delay={0.25}>
           <div className="mb-10">
-            <h2 className="text-2xl md:text-3xl font-pixel-title text-text-primary mb-6">
+            <h2 className="text-2xl text-text-primary mb-6">
               {t("techStack")}
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="inline-flex px-3 py-1.5 text-base font-pixel-mono text-accent-secondary bg-accent-secondary/10 border border-accent-secondary/20"
+                  className="pill"
                 >
                   {tech}
                 </span>
@@ -136,19 +152,19 @@ export default async function ProjectDetailPage({
 
         <ScrollReveal delay={0.3}>
           <div>
-            <h2 className="text-2xl md:text-3xl font-pixel-title text-text-primary mb-6">
+            <h2 className="text-2xl text-text-primary mb-6">
               {t("features")}
             </h2>
-            <ul className="space-y-4">
+            <ul className="space-y-3.5">
               {project.features.map((feature, index) => {
                 const key = `${project.slug}.feature${index + 1}`;
                 const translatedFeature = t.has(key) ? t(key) : feature;
                 return (
                   <li
                     key={`${project.slug}-${index}`}
-                    className="flex items-start gap-3 text-lg md:text-xl font-pixel-mono text-text-secondary leading-relaxed"
+                    className="flex items-start gap-3 text-base md:text-lg text-text-secondary leading-relaxed"
                   >
-                    <span className="mt-2.5 w-1.5 h-1.5 bg-accent-primary shrink-0" />
+                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" />
                     {translatedFeature}
                   </li>
                 );

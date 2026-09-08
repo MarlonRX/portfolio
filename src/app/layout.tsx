@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Press_Start_2P, VT323, Silkscreen } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,24 +11,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const pressStart2P = Press_Start_2P({
-  weight: "400",
-  variable: "--font-press-start",
-  subsets: ["latin"],
-});
-
-const vt323 = VT323({
-  weight: "400",
-  variable: "--font-vt323",
-  subsets: ["latin"],
-});
-
-const silkscreen = Silkscreen({
-  weight: ["400", "700"],
-  variable: "--font-silkscreen",
-  subsets: ["latin"],
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,11 +19,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${pressStart2P.variable} ${vt323.variable} ${silkscreen.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-bg-base text-text-primary antialiased flex flex-col">
-        <div className="noise-overlay" aria-hidden="true" />
         {children}
       </body>
     </html>

@@ -21,9 +21,9 @@ export default function FeaturedProjects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-primary mb-4">
+          <h2 className="mb-4 text-3xl md:text-4xl text-text-primary">
             {t("title")}
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto">
@@ -55,7 +55,7 @@ export default function FeaturedProjects() {
         >
           <Link
             href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 text-accent-secondary font-medium hover:text-accent-secondary-hover transition-colors group"
+            className="group inline-flex items-center gap-2 text-[15px] font-medium text-accent-secondary transition-colors hover:text-accent-secondary-hover"
           >
             {t("viewAll")}
             <ArrowRight

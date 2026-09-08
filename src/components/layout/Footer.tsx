@@ -10,71 +10,72 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border-subtle bg-bg-base">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-navy-band">
+      {/* Banda de contacto — el momento oscuro del sitio */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-col items-center md:items-start gap-2">
-              <span className="text-base sm:text-lg font-pixel-title tracking-tight text-text-primary">
-                Marlon Ramirez
-              </span>
-              <p className="text-sm text-text-muted">
-                &copy; {currentYear} {t("rights")}
+          <div className="flex flex-col items-start justify-between gap-10 py-20 md:flex-row md:items-end md:py-24">
+            <div>
+              <p
+                className="tech-label mb-5 flex items-center gap-3"
+                style={{ color: "rgba(245,243,238,0.55)" }}
+              >
+                <span className="inline-block h-px w-5 bg-accent-primary" />
+                {t("contactLabel")}
+              </p>
+              <h2 className="text-3xl md:text-4xl text-parchment">
+                {t("contactTitle")}
+              </h2>
+              <p className="mt-4 max-w-[40ch] text-base text-parchment/65">
+                {t("contactBlurb")}
               </p>
             </div>
-
-            <div className="flex items-center gap-4">
-              <SocialLink href="https://github.com/MarlonRX" icon={<Code2 size={20} />} label="GitHub" />
-              <SocialLink href="https://www.linkedin.com/in/marlon-ramirez-6b448b268" icon={<Briefcase size={20} />} label="LinkedIn" />
-              <SocialLink href="mailto:mramirezce14@gmail.com" icon={<Mail size={20} />} label="Email" />
-            </div>
+            <Link
+              href="mailto:mramirezce1420@gmail.com"
+              className="inline-flex items-center gap-2 rounded-full bg-accent-primary px-6 py-3 text-[15px] font-medium text-navy-band transition-[transform,box-shadow] duration-200 hover:-translate-y-px"
+              style={{
+                boxShadow:
+                  "0 2px 8px rgba(212,175,55,0.35), 0 8px 24px rgba(0,0,0,0.35)",
+              }}
+            >
+              <Mail size={16} />
+              mramirezce1420@gmail.com
+            </Link>
           </div>
         </ScrollReveal>
+      </div>
 
-        <div className="mt-8 pt-8 border-t border-border-subtle text-center">
-          <p className="text-xs text-text-muted">
-            {t("builtWith")}{" "}
-            <Link
-              href="https://nextjs.org"
+      {/* Línea inferior */}
+      <div className="bg-[#04131f]">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-6 sm:px-6 lg:px-8">
+          <span className="text-sm font-medium text-parchment">
+            Marlon Ramirez<span className="text-accent-primary">.</span>
+          </span>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://github.com/MarlonRX"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent-secondary hover:underline"
+              aria-label="GitHub"
+              className="text-parchment/70 transition-colors hover:text-parchment"
             >
-              Next.js
-            </Link>{" "}
-            +{" "}
-            <Link
-              href="https://tailwindcss.com"
+              <Code2 size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/marlon-ramirez-6b448b268"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent-secondary hover:underline"
+              aria-label="LinkedIn"
+              className="text-parchment/70 transition-colors hover:text-parchment"
             >
-              Tailwind CSS
-            </Link>
-          </p>
+              <Briefcase size={18} />
+            </a>
+          </div>
+          <small className="text-xs text-parchment/68">
+            © {currentYear} {t("rights")}
+          </small>
         </div>
       </div>
     </footer>
-  );
-}
-
-function SocialLink({
-  href,
-  icon,
-  label,
-}: {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-}) {
-  return (
-    <Link
-      href={href}
-      aria-label={label}
-      className="p-2 rounded-lg text-text-muted hover:text-accent-secondary hover:bg-accent-secondary/10 transition-colors"
-      data-cursor-hover
-    >
-      {icon}
-    </Link>
   );
 }
