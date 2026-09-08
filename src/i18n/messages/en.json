@@ -12,6 +12,8 @@
   "home": {
     "hero": {
       "greeting": "Hi, I'm",
+      "eyebrow": "Full-stack software engineering",
+      "sub": "From financial dashboards in production to terminal tools written in Rust. Precise interfaces, solid APIs, deploys that don't wake anyone up.",
       "name": "Marlon Ramirez",
       "taglinePrefix": "I design and build ",
       "taglineWords": ["high-performance software.", "distributed systems.", "scalable solutions.", "efficient applications."],

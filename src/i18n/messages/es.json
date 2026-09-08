@@ -12,6 +12,8 @@
   "home": {
     "hero": {
       "greeting": "Hola, soy",
+      "eyebrow": "Ingeniería de software full-stack",
+      "sub": "De dashboards financieros en producción a herramientas de terminal escritas en Rust. Interfaces precisas, APIs sólidas, despliegues que no despiertan a nadie.",
       "name": "Marlon Ramirez",
       "taglinePrefix": "Diseño y construyo ",
       "taglineWords": ["software de alto rendimiento.", "sistemas distribuidos.", "soluciones escalables.", "aplicaciones eficientes."],
