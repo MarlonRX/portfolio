@@ -27,24 +27,24 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-bg-base/80 backdrop-blur-md border-b border-border-subtle">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/88 backdrop-blur-md border-b border-border-subtle">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link
             href={`/${locale}`}
-            className="text-base sm:text-lg font-pixel-title tracking-tight text-text-primary hover:text-accent-primary transition-colors"
+            className="text-[15px] font-medium tracking-tight text-text-primary"
           >
-            MRX
+            Marlon Ramirez<span className="text-accent-primary">.</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <div className="hidden md:flex items-center gap-7">
+            {navLinks.slice(0, 3).map((link) => (
               <Link
                 key={link.href}
                 href={`/${locale}${link.href}`}
-                className={`relative text-xl font-pixel-mono tracking-wide transition-colors ${
+                className={`relative text-sm transition-colors ${
                   isActive(link.href)
-                    ? "text-accent-primary"
+                    ? "font-medium text-text-primary"
                     : "text-text-secondary hover:text-text-primary"
                 }`}
               >
@@ -52,12 +52,18 @@ export default function Navbar() {
                 {isActive(link.href) && (
                   <m.span
                     layoutId="navbar-active"
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-accent-primary"
+                    className="absolute -bottom-1.5 left-0 right-0 h-px bg-accent-primary"
                   />
                 )}
               </Link>
             ))}
             <LocaleSwitcher />
+            <Link
+              href={`/${locale}/contact`}
+              className="btn-primary ml-1 px-4 py-2 text-sm"
+            >
+              {t("contact")}
+            </Link>
           </div>
 
           <div className="flex items-center gap-4 md:hidden">
@@ -66,6 +72,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-text-secondary hover:text-text-primary transition-colors"
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -76,21 +83,21 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <m.div
-            layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="md:hidden bg-bg-base/95 backdrop-blur-md border-b border-border-subtle overflow-hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+            className="md:hidden overflow-hidden border-b border-border-subtle bg-white/95 backdrop-blur-md"
           >
-            <div className="px-4 py-4 space-y-3">
+            <div className="space-y-1 px-4 py-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={`/${locale}${link.href}`}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-xl font-pixel-mono transition-colors ${
+                  className={`block rounded-lg px-3 py-2.5 text-[15px] transition-colors ${
                     isActive(link.href)
-                      ? "text-accent-primary"
+                      ? "font-medium bg-bg-surface text-text-primary"
                       : "text-text-secondary hover:text-text-primary"
                   }`}
                 >

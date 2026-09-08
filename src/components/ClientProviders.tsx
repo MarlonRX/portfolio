@@ -1,6 +1,5 @@
 "use client";
 
-import CustomCursor from "./CustomCursor";
 import PageTransition from "./PageTransition";
 
 export default function ClientProviders({
@@ -10,7 +9,6 @@ export default function ClientProviders({
 }) {
   return (
     <>
-      <CustomCursor />
       <PageTransition>{children}</PageTransition>
     </>
   );

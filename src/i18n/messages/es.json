@@ -7,7 +7,10 @@
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
-    "builtWith": "Construido con"
+    "builtWith": "Construido con",
+    "contactLabel": "Contacto",
+    "contactTitle": "¿Construimos algo bien hecho?",
+    "contactBlurb": "Respondo en menos de 24 horas."
   },
   "home": {
     "hero": {
