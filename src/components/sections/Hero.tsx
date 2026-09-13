@@ -6,7 +6,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import ImageWithFallback from "@/components/ui/ImageWithFallback";
+import HeroCarousel from "@/components/sections/HeroCarousel";
+import { getHeroProjects } from "@/data/projects";
 
 export default function Hero() {
   const t = useTranslations("home.hero");
@@ -46,7 +47,7 @@ export default function Hero() {
             {t("taglinePrefix")}
             <span className="relative inline-block font-normal">
               {taglineWord}
-              <span className="absolute inset-x-0 bottom-[0.08em] h-[2px] bg-accent-primary/85" />
+              <span className="absolute inset-x-0 bottom-[0.08em] h-1 bg-accent-primary/85" />
             </span>
           </h1>
 
@@ -71,28 +72,15 @@ export default function Hero() {
           </div>
         </m.div>
 
-        {/* Captura real del proyecto ancla, flotando con perspectiva */}
+        {/* Carrusel automático de proyectos ancla, flotando con perspectiva */}
         <m.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
           style={{ y: visualY }}
-          className="w-full max-w-2xl flex-1 lg:pl-8"
+          className="w-full max-w-4xl flex-1 lg:flex-[1.1] xl:flex-[1.2] lg:max-w-none"
         >
-          <div className="relative aspect-[16/10] overflow-hidden rounded-xl [transform:perspective(1400px)_rotateY(-4.5deg)_rotateX(1.5deg)] shadow-[var(--shadow-float)]">
-            <ImageWithFallback
-              src="/images/projects/nodovec-hero.webp"
-              alt="NodoVec — dashboard de gestión financiera personal"
-              fill
-              fallbackLabel="NodoVec"
-              className="object-cover object-top"
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              priority
-            />
-          </div>
-          <p className="tech-label mt-4 text-right">
-            NodoVec · Finanzas personales · Producción
-          </p>
+          <HeroCarousel projects={getHeroProjects()} />
         </m.div>
       </div>
     </section>

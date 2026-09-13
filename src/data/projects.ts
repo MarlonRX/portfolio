@@ -110,3 +110,12 @@ export const projects: Project[] = [
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
+
+export function getHeroProjects(): Project[] {
+  return projects.filter(
+    (p) =>
+      p.view &&
+      Boolean(p.image) &&
+      (p.status === "production" || p.status === "development")
+  );
+}
