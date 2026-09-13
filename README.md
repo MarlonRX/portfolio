@@ -62,12 +62,6 @@ Demo de e-commerce full-stack con catálogo, filtros y carrito sobre Next.js 16 
 - Stack: Next.js 16, Shopify Storefront API, Hydrogen React, Tailwind CSS v4, next-intl
 - En producción · [Repositorio](https://github.com/MarlonRX/vitrina) · [Demo en vivo](https://vitrina-kohl.vercel.app)
 
-## Currículum
-
-Una vista previa de mi CV (haz clic para abrirlo completo):
-
-<a href='public/images/cv.png'><img src='public/images/cv.png' width='760'></a>
-
 ## Correrlo localmente
 
 ```bash
