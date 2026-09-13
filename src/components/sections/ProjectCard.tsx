@@ -99,7 +99,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
         </div>
 
         <div className="p-8 flex flex-col flex-1">
-          <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
             <Link
               href={`/${locale}/projects/${project.slug}`}
               className="block"
@@ -109,7 +109,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
               </h3>
             </Link>
             {project.category && (
-              <span className="tech-label text-[10px] text-accent-secondary/80">
+              <span className="tech-label relative -top-[3px] text-[10px] text-accent-secondary/80">
                 {t(`category.${project.category}`)}
               </span>
             )}
