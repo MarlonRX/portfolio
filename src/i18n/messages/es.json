@@ -44,6 +44,12 @@
       "development": "En desarrollo",
       "planned": "Planificado"
     },
+    "category": {
+      "all": "Todos",
+      "web": "Web",
+      "terminal": "Terminal",
+      "tooling": "Herramientas"
+    },
     "techStack": "Stack técnico",
     "features": "Características",
     "links": {
@@ -99,6 +105,30 @@
       "feature4": "Internacionalización español/inglés",
       "feature5": "Diseño editorial con paleta borgoña y marfil",
       "feature6": "Listo para conmutar a una tienda real con credenciales"
+    },
+    "repo-xpert": {
+      "title": "Repo Xpert",
+      "description": "Analizador de repositorios Git en la terminal, en Rust puro y solo lectura: churn, hotspots, ownership y coupling calculados directamente sobre los objetos .git.",
+      "longDescription": "Repo Xpert responde a «qué significa este repositorio», no solo a «qué cambió». Lee el historial directamente desde los objetos .git con gix —sin subprocess ni parsing de porcelain— y calcula cuatro métricas: churn (líneas añadidas + eliminadas), hotspots (churn × LOC en un scatter ASCII), ownership/bus factor y coupling (archivos que co-cambian, con score Jaccard). Un repo de 10,000 commits indexa en ~1.3s (paralelo con rayon) y reabre en ~60ms desde una caché JSON incremental versionada en .git/repo-xpert/. Estrictamente solo lectura: sin red, sin credenciales, sin tocar el working tree. Fork de git-hero, del que reutiliza el andamiaje TUI y los temas.",
+      "feature1": "Motor de analítica sobre objetos .git con gix, sin subprocess de git",
+      "feature2": "Cuatro métricas: churn, hotspots (churn × LOC), ownership/bus factor y coupling (Jaccard)",
+      "feature3": "TUI de 4 pestañas (Resumen · Churn · Hotspots · Dueño) con scatter ASCII y tablas legibles",
+      "feature4": "Caché JSON incremental versionada en .git/repo-xpert/: ~1.3s inicial, ~60ms reabrir",
+      "feature5": "Modo headless `gadv scan` para scripts y CI, con vecinos co-change por archivo",
+      "feature6": "Estrictamente solo lectura: sin red, sin credenciales, sin escrituras al working tree",
+      "feature7": "Filtrado de lockfiles, vendor/, dist/ y mega-commits en hotspots y coupling"
+    },
+    "afiche-studio": {
+      "title": "Afiche Studio",
+      "description": "Generador self-host de imágenes promocionales (PNG/WEBP/JPG) desde HTML/CSS: un solo #canvas se exporta a seis formatos con editor en el navegador y CLI.",
+      "longDescription": "Afiche Studio convierte un #canvas en HTML/CSS en imágenes de alta resolución para posts, stories, thumbnails, banners y Open Graph. Modo studio (localhost:4560): edición de index.html y styles.css con autoguardado, preview con recarga en vivo por SSE, chips para ver el mismo diseño en cada variante y panel de exportación en PNG/WEBP/JPG a escala 1x–3x. El CLI renderiza por preset (--preset post|story|thumb|banner|og|wide), con --all, --json y scaffold escaneando los tokens de diseño del CSS global de una app (--app). Todo corre en tu máquina: sin cuenta, sin nube, sin telemetría. 27 tests con node:test, cero dependencias extra. Hermano de hyper-frames-videos: misma filosofía, imagen estática en vez de video.",
+      "feature1": "Editor en el navegador con recarga en vivo (SSE), autoguardado y URL compartible por proyecto",
+      "feature2": "Exporta PNG / WEBP / JPG con deviceScaleFactor 1x–3x, nítido para retina y zoom",
+      "feature3": "Seis formatos derivados de un solo diseño: post, story, thumb, banner, og y wide",
+      "feature4": "CLI completo: --create, --list, --preview, --preset, --all y --json",
+      "feature5": "Scaffold de pósters extrayendo tokens de diseño (:root, fuentes, radios) de una app con --app",
+      "feature6": "Self-host total: sin cuenta, sin nube, sin telemetría",
+      "feature7": "27 tests con node:test y cero dependencias extra"
     }
   },
   "about": {
