@@ -109,7 +109,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
               </h3>
             </Link>
             {project.category && (
-              <span className="tech-label relative -top-[3px] text-[10px] text-accent-secondary/80">
+              <span className="tech-label text-[10px] text-accent-secondary/80">
                 {t(`category.${project.category}`)}
               </span>
             )}

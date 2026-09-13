@@ -29,29 +29,21 @@ export default async function ProjectsPage({
   const t = await getServerTranslations(locale, "projects");
 
   const visible = projects.filter((p) => p.view);
-  const groups = CATEGORY_ORDER.map((category) => ({
-    category,
-    items: visible.filter((p) => p.category === category),
-  })).filter((g) => g.items.length > 0);
-  const uncategorized = visible.filter(
-    (p) => !p.category || !CATEGORY_ORDER.includes(p.category)
-  );
+  const rank = (p: (typeof visible)[number]) => {
+    const i = p.category ? CATEGORY_ORDER.indexOf(p.category) : -1;
+    return i === -1 ? CATEGORY_ORDER.length : i;
+  };
+  const ordered = [...visible].sort((a, b) => rank(a) - rank(b));
 
-  let idx = 0;
-  const cards = (items: typeof visible) =>
-    items.map((project) => {
-      const card = (
-        <ScrollReveal
-          key={project.slug}
-          delay={0.1 + idx * 0.08}
-          className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
-        >
-          <ProjectCard project={project} priority={idx < 2} />
-        </ScrollReveal>
-      );
-      idx += 1;
-      return card;
-    });
+  const cards = ordered.map((project, idx) => (
+    <ScrollReveal
+      key={project.slug}
+      delay={0.1 + idx * 0.08}
+      className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
+    >
+      <ProjectCard project={project} priority={idx < 2} />
+    </ScrollReveal>
+  ));
 
   return (
     <div className="pt-24 pb-24 md:pb-32 px-4 sm:px-6 lg:px-8">
@@ -69,26 +61,7 @@ export default async function ProjectsPage({
           </ScrollReveal>
         </div>
 
-        {groups.map((group, gi) => (
-          <section key={group.category} className={gi > 0 ? "mt-16" : ""}>
-            <ScrollReveal>
-              <h2 className="tech-label mb-6 flex items-center gap-4">
-                {t(`category.${group.category}`)}
-                <span
-                  aria-hidden="true"
-                  className="h-px flex-1 bg-border-subtle"
-                />
-              </h2>
-            </ScrollReveal>
-            <div className="flex flex-wrap gap-6 md:gap-8">{cards(group.items)}</div>
-          </section>
-        ))}
-
-        {uncategorized.length > 0 && (
-          <section className={groups.length > 0 ? "mt-16" : ""}>
-            <div className="flex flex-wrap gap-6 md:gap-8">{cards(uncategorized)}</div>
-          </section>
-        )}
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8">{cards}</div>
       </div>
     </div>
   );
