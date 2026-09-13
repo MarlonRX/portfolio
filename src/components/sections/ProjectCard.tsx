@@ -99,14 +99,21 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
         </div>
 
         <div className="p-8 flex flex-col flex-1">
-          <Link
-            href={`/${locale}/projects/${project.slug}`}
-            className="block"
-          >
-            <h3 className="mb-3 text-xl md:text-2xl font-medium text-text-primary transition-colors group-hover:text-accent-secondary">
-              {t.has(`${project.slug}.title`) ? t(`${project.slug}.title`) : project.title}
-            </h3>
-          </Link>
+          <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <Link
+              href={`/${locale}/projects/${project.slug}`}
+              className="block"
+            >
+              <h3 className="text-xl md:text-2xl font-medium text-text-primary transition-colors group-hover:text-accent-secondary">
+                {t.has(`${project.slug}.title`) ? t(`${project.slug}.title`) : project.title}
+              </h3>
+            </Link>
+            {project.category && (
+              <span className="tech-label text-[10px] text-accent-secondary/80">
+                {t(`category.${project.category}`)}
+              </span>
+            )}
+          </div>
 
           <p className="text-text-secondary text-base leading-relaxed mb-6 line-clamp-3">
             {t.has(`${project.slug}.description`) ? t(`${project.slug}.description`) : project.description}
