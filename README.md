@@ -30,6 +30,8 @@ Software de gestión financiera personal con dashboard analytics, gestión de ta
 <img src='public/images/projects/nodovec-hero.webp' width='760'>
 
 <video src='public/videos/projects/nodovec-promo.webm' controls width='760' loop>
+  Tu navegador no soporta video — <a href='public/videos/projects/nodovec-promo.webm'>ver promo de NodoVec (.webm)</a>
+</video>
 
 - Stack: Astro 5, React, Tailwind CSS v4, Laravel 12, MySQL, Kubernetes
 - En producción · [Repositorio](https://github.com/MarlonRX/nodovec_frontend) · [Demo en vivo](https://nodovec-web-production.up.railway.app)
@@ -41,6 +43,8 @@ TUI rápida y visual para gestionar Git, escrita en Rust con Ratatui. Alternativ
 <img src='public/images/projects/git-hero.webp' width='760'>
 
 <video src='public/videos/projects/git-hero-promo.webm' controls width='760' loop>
+  Tu navegador no soporta video — <a href='public/videos/projects/git-hero-promo.webm'>ver promo de Git Hero (.webm)</a>
+</video>
 
 - Stack: Rust, Ratatui, Crossterm
 - En producción · [Repositorio](https://github.com/MarlonRX/git-hero)
@@ -52,6 +56,8 @@ Demo de e-commerce full-stack con catálogo, filtros y carrito sobre Next.js 16 
 <img src='public/images/projects/vitrina-hero.webp' width='760'>
 
 <video src='public/videos/projects/vitrina-promo.webm' controls width='760' loop>
+  Tu navegador no soporta video — <a href='public/videos/projects/vitrina-promo.webm'>ver promo de Vitrina (.webm)</a>
+</video>
 
 - Stack: Next.js 16, Shopify Storefront API, Hydrogen React, Tailwind CSS v4, next-intl
 - En producción · [Repositorio](https://github.com/MarlonRX/vitrina) · [Demo en vivo](https://vitrina-kohl.vercel.app)
