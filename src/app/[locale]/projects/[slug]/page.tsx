@@ -77,7 +77,8 @@ export default async function ProjectDetailPage({
                 muted
                 loop
                 playsInline
-                controls
+                disablePictureInPicture
+                disableRemotePlayback
                 className="w-full h-full object-cover"
               />
             ) : (
