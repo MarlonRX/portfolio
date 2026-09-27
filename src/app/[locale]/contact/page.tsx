@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { getServerTranslations } from "@/lib/i18n";
+import { setRequestLocale } from "next-intl/server";
 import { Code2, Briefcase, Mail, ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import SplitText from "@/components/animations/SplitText";
@@ -12,6 +13,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getServerTranslations(locale, "meta.contact");
   return {
     title: `${t("title")} — Marlon Ramirez`,
@@ -25,6 +27,7 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getServerTranslations(locale, "contact");
 
   const contactLinks = [

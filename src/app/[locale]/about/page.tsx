@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { getServerTranslations } from "@/lib/i18n";
+import { setRequestLocale } from "next-intl/server";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import DecryptedText from "@/components/animations/DecryptedText";
 import SpotlightCard from "@/components/ui/SpotlightCard";
@@ -11,6 +12,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getServerTranslations(locale, "meta.about");
   return {
     title: `${t("title")} — Marlon Ramirez`,
@@ -46,6 +48,7 @@ export default async function AboutPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getServerTranslations(locale, "about");
 
   return (

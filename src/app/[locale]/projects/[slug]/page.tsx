@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import { getServerTranslations } from "@/lib/i18n";
 import { notFound } from "next/navigation";
-import { getProjectBySlug } from "@/data/projects";
+import { setRequestLocale } from "next-intl/server";
+import { projects, getProjectBySlug } from "@/data/projects";
+import { routing } from "@/i18n/routing";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import ImageWithFallback from "@/components/ui/ImageWithFallback";
@@ -11,18 +13,19 @@ interface ProjectDetailPageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
 
-export async function generateStaticParams() {
-  const { projects } = await import("@/data/projects");
-  return projects.reduce<{ slug: string }[]>((acc, project) => {
-    if (project.view) acc.push({ slug: project.slug });
-    return acc;
-  }, []);
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    projects
+      .filter((project) => project.view)
+      .map((project) => ({ locale, slug: project.slug }))
+  );
 }
 
 export async function generateMetadata({
   params,
 }: ProjectDetailPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const t = await getServerTranslations(locale, "meta");
   const tp = await getServerTranslations(locale, "projects");
   const project = getProjectBySlug(slug);
@@ -43,6 +46,7 @@ export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const project = getProjectBySlug(slug);
   const t = await getServerTranslations(locale, "projects");
 

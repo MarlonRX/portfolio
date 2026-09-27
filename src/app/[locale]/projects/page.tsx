@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { getServerTranslations } from "@/lib/i18n";
+import { setRequestLocale } from "next-intl/server";
 import { projects } from "@/data/projects";
 import { ProjectCategory } from "@/types/project";
 import ProjectCard from "@/components/sections/ProjectCard";
@@ -15,6 +16,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getServerTranslations(locale, "meta.projects");
   return {
     title: `${t("title")} — Marlon Ramirez`,
@@ -28,6 +30,7 @@ export default async function ProjectsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getServerTranslations(locale, "projects");
 
   const visible = projects.filter((p) => p.view);

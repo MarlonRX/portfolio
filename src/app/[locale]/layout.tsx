@@ -7,6 +7,10 @@ import Footer from "@/components/layout/Footer";
 import ClientProviders from "@/components/ClientProviders";
 import { Metadata } from "next";
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 const getMetadataBase = () => {
   const url = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
@@ -23,6 +27,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   // Example: Different titles per locale
   const titles = {
