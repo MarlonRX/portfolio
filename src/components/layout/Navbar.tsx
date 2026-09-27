@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/88 backdrop-blur-md border-b border-border-subtle">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-bg-base/75 backdrop-blur-md border-b border-border-subtle">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link
@@ -87,7 +87,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="md:hidden overflow-hidden border-b border-border-subtle bg-white/95 backdrop-blur-md"
+            className="md:hidden overflow-hidden border-b border-border-subtle bg-bg-base/95 backdrop-blur-md"
           >
             <div className="space-y-1 px-4 py-4">
               {navLinks.map((link) => (

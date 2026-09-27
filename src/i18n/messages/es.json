@@ -7,38 +7,34 @@
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
-    "builtWith": "Construido con",
     "contactLabel": "Contacto",
-    "contactTitle": "¿Construimos algo bien hecho?",
-    "contactBlurb": "Respondo en menos de 24 horas."
+    "contactTitle": "Cuéntame qué quieres construir.",
+    "contactBlurb": "Respondo rápido, casi siempre en menos de 24 horas."
   },
   "home": {
     "hero": {
-      "greeting": "Hola, soy",
-      "eyebrow": "Ingeniería de software full-stack",
-      "sub": "De dashboards financieros en producción a herramientas de terminal escritas en Rust. Interfaces precisas, APIs sólidas, despliegues que no despiertan a nadie.",
-      "name": "Marlon Ramirez",
-      "taglinePrefix": "Diseño y construyo ",
+      "eyebrow": "Full-stack · Rust · Kubernetes",
+      "sub": "De dashboards financieros en producción a herramientas de terminal en Rust. Interfaces cuidadas, APIs que no fallan y despliegues que no despiertan a nadie a las 3 a.m.",
+      "taglinePrefix": "Diseño y construyo",
       "taglineWords": [
-        "software de alto rendimiento.",
-        "sistemas distribuidos.",
-        "soluciones escalables.",
-        "aplicaciones eficientes."
+        "software.",
+        "sistemas.",
+        "herramientas.",
+        "productos."
       ],
-      "taglineSuffix": "",
       "ctaPrimary": "Ver proyectos",
-      "ctaSecondary": "Contactar"
+      "ctaSecondary": "Contacto"
     },
     "projects": {
-      "title": "Proyectos destacados",
-      "subtitle": "Soluciones empresariales diseñadas con precisión y escalabilidad",
+      "title": "Lo que he construido",
+      "subtitle": "Proyectos reales, en producción o camino de estarlo. Pasa el cursor por cada uno para verlo en movimiento.",
       "viewAll": "Ver todos los proyectos",
       "viewProject": "Ver proyecto"
     }
   },
   "projects": {
     "title": "Proyectos",
-    "subtitle": "Una selección de trabajos robustos y bien construidos",
+    "subtitle": "Trabajo real: qué problema resuelve cada pieza y con qué está construida.",
     "status": {
       "production": "En producción",
       "development": "En desarrollo",
@@ -60,7 +56,7 @@
     },
     "git-hero": {
       "title": "Git Hero",
-      "description": "TUI rápida y visual para gestionar Git, escrita en Rust con Ratatui. Alternativa moderna a lazygit y gitui con dashboard interactivo, 10 temas, soporte i18n y modo CLI.",
+      "description": "Una TUI rápida y visual para gestionar Git, escrita en Rust con Ratatui. La alternativa a lazygit y gitui que yo quería usar: dashboard interactivo, 10 temas, i18n y modo CLI.",
       "longDescription": "Git Hero es una Terminal User Interface (TUI) de alto rendimiento para gestionar repositorios Git. Ofrece un dashboard visual con branch, remote, ahead/behind, panel de archivos con indicadores de cambio, diff lado a lado, historial de commits expandible y soporte para mouse y atajos tipo vim. Incluye 10 temas personalizables, i18n (EN/ES), modo CLI no interactivo y modo debug, todo distribuido vía cargo, Homebrew, AUR y snap.",
       "feature1": "Dashboard visual con branch, remote, ahead/behind",
       "feature2": "Panel de archivos con indicadores de cambio y diff lado a lado",
@@ -86,7 +82,7 @@
     },
     "nodovec": {
       "title": "NodoVec",
-      "description": "Software de gestión financiera personal con dashboard analytics, gestión de tarjetas de crédito, compras a cuotas, multi-moneda y ocho temas visuales.",
+      "description": "Gestión financiera personal: dashboard con analíticas, tarjetas de crédito, compras a cuotas, multi-moneda y ocho temas visuales. En producción, con usuarios reales.",
       "longDescription": "NodoVec es una solución integral de gestión financiera personal que permite a los usuarios trackear sus transacciones, gestionar tarjetas de crédito, realizar compras a cuotas, y visualizar métricas financieras a través de un dashboard completo con múltiples librerías de gráficos.",
       "feature1": "Dashboard analytics con múltiples librerías de gráficos",
       "feature2": "Gestión de tarjetas de crédito y compras a cuotas",
@@ -97,7 +93,7 @@
     },
     "vitrina": {
       "title": "Vitrina",
-      "description": "Demo de e-commerce full-stack con catálogo, filtros y carrito sobre Next.js 16 y la Shopify Storefront API, lista para conmutar a una tienda real.",
+      "description": "Un e-commerce completo montado sobre Next.js 16 y la Shopify Storefront API: catálogo, filtros y carrito. Cambias las credenciales y pasa a tienda real sin tocar código.",
       "longDescription": "Vitrina es una tienda de demostración portafolio que replica la experiencia completa de un e-commerce: catálogo de productos con búsqueda y filtros, página de detalle, carrito de compras y checkout embebido, alimentada por la Shopify Storefront API mediante Hydrogen React. Construida con Next.js 16 App Router, Tailwind CSS v4 y next-intl para internacionalización ES/EN, con diseño editorial sobrio (borgoña + marfil). Sin pagos reales: al sustituir credenciales de una tienda, el proyecto pasa a producción sin reescribir código.",
       "feature1": "Catálogo con búsqueda, filtros y ordenación",
       "feature2": "Carrito de compras con estado global",
@@ -108,7 +104,7 @@
     },
     "repo-xpert": {
       "title": "Repo Xpert",
-      "description": "Analizador de repositorios Git en la terminal, en Rust puro y solo lectura: churn, hotspots, ownership y coupling calculados directamente sobre los objetos .git.",
+      "description": "Analizador de repositorios Git en la terminal, en Rust puro y solo lectura: churn, hotspots, ownership y coupling leídos directamente de los objetos .git.",
       "longDescription": "Repo Xpert responde a «qué significa este repositorio», no solo a «qué cambió». Lee el historial directamente desde los objetos .git con gix —sin subprocess ni parsing de porcelain— y calcula cuatro métricas: churn (líneas añadidas + eliminadas), hotspots (churn × LOC en un scatter ASCII), ownership/bus factor y coupling (archivos que co-cambian, con score Jaccard). Un repo de 10,000 commits indexa en ~1.3s (paralelo con rayon) y reabre en ~60ms desde una caché JSON incremental versionada en .git/repo-xpert/. Estrictamente solo lectura: sin red, sin credenciales, sin tocar el working tree. Fork de git-hero, del que reutiliza el andamiaje TUI y los temas.",
       "feature1": "Motor de analítica sobre objetos .git con gix, sin subprocess de git",
       "feature2": "Cuatro métricas: churn, hotspots (churn × LOC), ownership/bus factor y coupling (Jaccard)",
@@ -120,7 +116,7 @@
     },
     "afiche-studio": {
       "title": "Afiche Studio",
-      "description": "Generador self-host de imágenes promocionales (PNG/WEBP/JPG) desde HTML/CSS: un solo #canvas se exporta a seis formatos con editor en el navegador y CLI.",
+      "description": "Generador self-host de imágenes promocionales desde HTML/CSS: un solo #canvas se exporta a seis formatos, con editor en el navegador y CLI. Todo en tu máquina.",
       "longDescription": "Afiche Studio convierte un #canvas en HTML/CSS en imágenes de alta resolución para posts, stories, thumbnails, banners y Open Graph. Modo studio (localhost:4560): edición de index.html y styles.css con autoguardado, preview con recarga en vivo por SSE, chips para ver el mismo diseño en cada variante y panel de exportación en PNG/WEBP/JPG a escala 1x–3x. El CLI renderiza por preset (--preset post|story|thumb|banner|og|wide), con --all, --json y scaffold escaneando los tokens de diseño del CSS global de una app (--app). Todo corre en tu máquina: sin cuenta, sin nube, sin telemetría. 27 tests con node:test, cero dependencias extra. Hermano de hyper-frames-videos: misma filosofía, imagen estática en vez de video.",
       "feature1": "Editor en el navegador con recarga en vivo (SSE), autoguardado y URL compartible por proyecto",
       "feature2": "Exporta PNG / WEBP / JPG con deviceScaleFactor 1x–3x, nítido para retina y zoom",
@@ -134,9 +130,9 @@
   "about": {
     "title": "Sobre mí",
     "role": "Desarrollador Full Stack",
-    "bio1": "Soy un desarrollador apasionado por construir software que resuelve problemas reales. Con experiencia en el ecosistema React, Next.js y Laravel, me especializo en crear aplicaciones robustas, escalables y con excelente experiencia de usuario.",
-    "bio2": "Mi enfoque combina pensamiento técnico profundo con atención al detalle en diseño y arquitectura. Creo en la calidad del código, las buenas prácticas y la entrega continua de valor.",
-    "bio3": "Cuando no estoy codeando, me gusta explorar nuevas tecnologías, contribuir a proyectos open source y compartir conocimiento con la comunidad.",
+    "bio1": "Me dedico a construir software que resuelve problemas concretos. Trabajo sobre todo con React, Next.js y Laravel, y escribo Rust cuando el proyecto lo pide a gritos.",
+    "bio2": "Me importa que el código dure: pruebas, buena arquitectura y detalles de diseño que se notan al usar el producto, no al leer el diff.",
+    "bio3": "Fuera del trabajo publico herramientas open source como Git Hero y Repo Xpert, y casi todo lo que aprendo termina en un side project.",
     "experience": {
       "title": "Experiencia",
       "job1": {
@@ -146,7 +142,7 @@
         "period": "abr. 2024 - actualidad",
         "location": "Colombia (En remoto)",
         "tech": "PHP, Next.js, TypeScript",
-        "description": "Desarrollo de aplicaciones web robustas, optimización de rendimiento y mantenimiento de arquitecturas modernas en frontend y backend."
+        "description": "Aplicaciones web de punta a punta: frontend, backend, rendimiento y el mantenimiento que nadie ve pero todo el mundo nota cuando falta."
       }
     },
     "skills": {
@@ -158,27 +154,28 @@
   },
   "contact": {
     "title": "Contacto",
-    "subtitle": "¿Tienes un proyecto en mente o quieres colaborar? Hablemos.",
-    "cta": "Construyamos algo grandioso juntos",
+    "subtitle": "¿Un proyecto, una idea a medias o ganas de hablar de software? Escríbeme.",
+    "cta": "Construyamos algo que funcione de verdad",
+    "emailCta": "Escríbeme ahora",
     "links": {
       "github": "GitHub",
       "linkedin": "LinkedIn",
       "email": "Email"
     },
-    "availability": "Disponible para oportunidades y colaboraciones."
+    "availability": "Abierto a oportunidades y colaboraciones."
   },
   "meta": {
     "about": {
       "title": "Sobre mí",
-      "description": "Conoce más sobre Marlon Ramirez, desarrollador full stack."
+      "description": "Quién es Marlon Ramirez y cómo trabaja: desarrollador full stack."
     },
     "contact": {
       "title": "Contacto",
-      "description": "¿Tienes un proyecto en mente? Ponte en contacto con Marlon Ramirez."
+      "description": "¿Tienes un proyecto en mente? Escríbele a Marlon Ramirez."
     },
     "projects": {
       "title": "Proyectos",
-      "description": "Una selección de proyectos robustos y bien construidos."
+      "description": "Proyectos reales: qué problema resuelve cada uno y con qué está construido."
     },
     "notFound": {
       "title": "Página no encontrada",
@@ -187,7 +184,9 @@
   },
   "common": {
     "loading": "Cargando...",
-    "comingSoon": "Próximamente",
-    "inDevelopment": "En desarrollo"
+    "prevSlide": "Anterior",
+    "nextSlide": "Siguiente",
+    "slides": "Diapositivas",
+    "goToSlide": "Ir a la diapositiva"
   }
 }

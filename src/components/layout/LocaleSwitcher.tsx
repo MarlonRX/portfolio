@@ -18,7 +18,7 @@ export default function LocaleSwitcher() {
           onClick={() => switchLocale(l.code)}
           className={`cursor-pointer rounded-full px-2.5 py-1 text-[11.5px] font-medium tracking-wide transition-colors ${
             currentLocale === l.code
-              ? "bg-white text-text-primary shadow-[0_1px_2px_rgba(50,50,93,0.12)]"
+              ? "bg-accent-primary text-text-inverted shadow-[0_1px_4px_rgba(201,242,75,0.3)]"
               : "text-text-muted hover:text-text-secondary"
           }`}
           aria-label={`Switch to ${l.label}`}

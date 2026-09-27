@@ -44,7 +44,7 @@ export default function ImageWithFallback({
       >
         {/* Subtle pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(212,175,55,0.5) 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(201,242,75,0.5) 1px, transparent 0)`,
           backgroundSize: '24px 24px',
         }} />
         <span className="relative z-10 text-sm font-mono text-text-muted tracking-wider">

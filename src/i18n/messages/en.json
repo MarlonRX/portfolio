@@ -7,38 +7,34 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "builtWith": "Built with",
     "contactLabel": "Contact",
-    "contactTitle": "Shall we build something well-made?",
-    "contactBlurb": "I reply within 24 hours."
+    "contactTitle": "Tell me what you want to build.",
+    "contactBlurb": "I reply fast, usually within 24 hours."
   },
   "home": {
     "hero": {
-      "greeting": "Hi, I'm",
-      "eyebrow": "Full-stack software engineering",
-      "sub": "From financial dashboards in production to terminal tools written in Rust. Precise interfaces, solid APIs, deploys that don't wake anyone up.",
-      "name": "Marlon Ramirez",
-      "taglinePrefix": "I design and build ",
+      "eyebrow": "Full-stack · Rust · Kubernetes",
+      "sub": "From financial dashboards in production to terminal tools written in Rust. Careful interfaces, APIs that hold up, deploys that don't wake anyone at 3 a.m.",
+      "taglinePrefix": "I design and build",
       "taglineWords": [
-        "high-performance software.",
-        "distributed systems.",
-        "scalable solutions.",
-        "efficient applications."
+        "software.",
+        "systems.",
+        "tools.",
+        "products."
       ],
-      "taglineSuffix": "",
       "ctaPrimary": "View projects",
-      "ctaSecondary": "Get in touch"
+      "ctaSecondary": "Contact"
     },
     "projects": {
-      "title": "Featured projects",
-      "subtitle": "Enterprise solutions designed with precision and scalability",
+      "title": "What I've built",
+      "subtitle": "Real projects, in production or on their way there. Hover any of them to see it move.",
       "viewAll": "View all projects",
       "viewProject": "View project"
     }
   },
   "projects": {
     "title": "Projects",
-    "subtitle": "A selection of robust, well-crafted work",
+    "subtitle": "Real work: what problem each piece solves and what it's built with.",
     "status": {
       "production": "In production",
       "development": "In development",
@@ -60,7 +56,7 @@
     },
     "git-hero": {
       "title": "Git Hero",
-      "description": "Fast and visual TUI for managing Git, written in Rust with Ratatui. A modern alternative to lazygit and gitui with interactive dashboard, 10 themes, i18n support, and CLI mode.",
+      "description": "A fast, visual TUI for managing Git, written in Rust with Ratatui. The lazygit/gitui alternative I wanted for myself: interactive dashboard, 10 themes, i18n, and a CLI mode.",
       "longDescription": "Git Hero is a high-performance Terminal User Interface (TUI) for managing Git repositories. It offers a visual dashboard with branch, remote, ahead/behind, file panel with change indicators, side-by-side diff, expandable commit history, and support for mouse and vim-like shortcuts. Includes 10 customizable themes, i18n (EN/ES), non-interactive CLI mode, and debug mode, all distributed via cargo, Homebrew, AUR, and snap.",
       "feature1": "Visual dashboard with branch, remote, ahead/behind",
       "feature2": "File panel with change indicators and side-by-side diff",
@@ -86,7 +82,7 @@
     },
     "nodovec": {
       "title": "NodoVec",
-      "description": "Personal financial management software with dashboard analytics, credit card management, installment purchases, multi-currency support, and eight visual themes.",
+      "description": "Personal finance management: analytics dashboard, credit cards, installment purchases, multi-currency, and eight visual themes. In production, with real users.",
       "longDescription": "NodoVec is a comprehensive personal financial management solution that allows users to track their transactions, manage credit cards, perform installment purchases, and visualize financial metrics through a complete dashboard with multiple charting libraries.",
       "feature1": "Dashboard analytics with multiple chart libraries",
       "feature2": "Credit card and installment purchase management",
@@ -97,7 +93,7 @@
     },
     "vitrina": {
       "title": "Vitrina",
-      "description": "Full-stack e-commerce demo with catalog, filters and cart built on Next.js 16 and the Shopify Storefront API, ready to switch to a real store.",
+      "description": "A complete e-commerce build on Next.js 16 and the Shopify Storefront API: catalog, filters, cart. Swap in real credentials and it goes to production without touching the code.",
       "longDescription": "Vitrina is a portfolio demo store that replicates the complete e-commerce experience: product catalog with search and filters, detail page, shopping cart and embedded checkout, powered by the Shopify Storefront API through Hydrogen React. Built with Next.js 16 App Router, Tailwind CSS v4 and next-intl for ES/EN internationalization, with a sober editorial design (burgundy + ivory). No real payments: swapping in a store's credentials takes the project to production without rewriting code.",
       "feature1": "Catalog with search, filters and sorting",
       "feature2": "Shopping cart with global state",
@@ -108,7 +104,7 @@
     },
     "repo-xpert": {
       "title": "Repo Xpert",
-      "description": "Git repository analyzer in your terminal, in pure read-only Rust: churn, hotspots, ownership and coupling computed directly from the .git objects.",
+      "description": "A Git repository analyzer for your terminal, in pure read-only Rust: churn, hotspots, ownership and coupling read straight from the .git objects.",
       "longDescription": "Repo Xpert answers \"what does this repository mean\", not just \"what changed\". It reads history directly from .git objects with gix —no subprocess, no porcelain parsing— and computes four metrics: churn (added + deleted lines), hotspots (churn × LOC as an ASCII scatter), ownership/bus factor and coupling (files that co-change, with Jaccard scores). A 10,000-commit repo indexes in ~1.3s (parallel via rayon) and reopens in ~60ms from a versioned cache inside .git/repo-xpert/. Strictly read-only: no network, no credentials, no writes to your working tree. Forked from git-hero, reusing its TUI scaffolding and themes.",
       "feature1": "Analytics engine over .git objects with gix, no git subprocess",
       "feature2": "Four metrics: churn, hotspots (churn × LOC), ownership/bus factor and coupling (Jaccard)",
@@ -120,7 +116,7 @@
     },
     "afiche-studio": {
       "title": "Afiche Studio",
-      "description": "Self-hosted promotional image generator (PNG/WEBP/JPG) from HTML/CSS: a single #canvas exported to six formats with a browser editor and a CLI.",
+      "description": "A self-hosted promotional image generator from HTML/CSS: one #canvas exported to six formats, with a browser editor and a CLI. Everything runs on your machine.",
       "longDescription": "Afiche Studio turns an HTML/CSS #canvas into high-resolution images for posts, stories, thumbnails, banners and Open Graph. Studio mode (localhost:4560): edit index.html and styles.css with autosave, live-reload preview over SSE, chips to see the same design in every variant, and a PNG/WEBP/JPG export panel at 1x–3x scale. The CLI renders per preset (--preset post|story|thumb|banner|og|wide), with --all, --json and scaffolding that scans an app's global CSS design tokens (--app). Everything runs on your machine: no account, no cloud, no telemetry. 27 tests with node:test, zero extra deps. Sister project of hyper-frames-videos: same philosophy, static image instead of video.",
       "feature1": "Browser-based editor with live reload (SSE), autosave and shareable per-project URL",
       "feature2": "Exports PNG / WEBP / JPG with deviceScaleFactor 1x–3x, sharp for retina and zoom",
@@ -134,9 +130,9 @@
   "about": {
     "title": "About me",
     "role": "Full Stack Developer",
-    "bio1": "I'm a developer passionate about building software that solves real problems. With experience in the React, Next.js, and Laravel ecosystems, I specialize in creating robust, scalable applications with excellent user experience.",
-    "bio2": "My approach combines deep technical thinking with attention to detail in design and architecture. I believe in code quality, best practices, and continuous delivery of value.",
-    "bio3": "When I'm not coding, I enjoy exploring new technologies, contributing to open source projects, and sharing knowledge with the community.",
+    "bio1": "I build software that solves concrete problems. I mostly work with React, Next.js and Laravel, and I write Rust when the project screams for it.",
+    "bio2": "I care about code that lasts: tests, sound architecture, and design details you notice when using the product, not when reading the diff.",
+    "bio3": "Outside work I publish open source tools like Git Hero and Repo Xpert, and almost everything I learn ends up in a side project.",
     "experience": {
       "title": "Experience",
       "job1": {
@@ -146,7 +142,7 @@
         "period": "Apr 2024 - Present",
         "location": "Colombia (Remote)",
         "tech": "PHP, Next.js, TypeScript",
-        "description": "Developing robust web applications, optimizing performance, and maintaining modern front-end and back-end architectures."
+        "description": "Web apps end to end: frontend, backend, performance, and the maintenance nobody sees until it's missing."
       }
     },
     "skills": {
@@ -158,27 +154,28 @@
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Have a project in mind or want to collaborate? Let's talk.",
-    "cta": "Let's build something great together",
+    "subtitle": "A project, a half-formed idea, or just want to talk software? Write to me.",
+    "cta": "Let's build something that actually works",
+    "emailCta": "Email me now",
     "links": {
       "github": "GitHub",
       "linkedin": "LinkedIn",
       "email": "Email"
     },
-    "availability": "Available for opportunities and collaborations."
+    "availability": "Open to opportunities and collaborations."
   },
   "meta": {
     "about": {
       "title": "About",
-      "description": "Learn more about Marlon Ramirez, full stack developer."
+      "description": "Who Marlon Ramirez is and how he works: full stack developer."
     },
     "contact": {
       "title": "Contact",
-      "description": "Have a project in mind? Get in touch with Marlon Ramirez."
+      "description": "Have a project in mind? Write to Marlon Ramirez."
     },
     "projects": {
       "title": "Projects",
-      "description": "A selection of robust, well-crafted projects."
+      "description": "Real projects: what problem each one solves and what it's built with."
     },
     "notFound": {
       "title": "Page not found",
@@ -187,7 +184,9 @@
   },
   "common": {
     "loading": "Loading...",
-    "comingSoon": "Coming soon",
-    "inDevelopment": "In development"
+    "prevSlide": "Previous",
+    "nextSlide": "Next",
+    "slides": "Slides",
+    "goToSlide": "Go to slide"
   }
 }

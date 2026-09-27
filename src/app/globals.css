@@ -1,39 +1,39 @@
 @import "tailwindcss";
 
-/* ── Identidad F — Fintech premium claro (Stripe-like) ──────────────
-   Lienzo blanco, tinta navy, dorado como puntuación mínima,
-   sombras teñidas de azul y hairlines casi invisibles.          */
+/* ── Identidad V — Dark cinematic + acento volt ────────────────────
+   Lienzo casi negro, tinta hueso cálido, un único acento ácido,
+   hairlines blancos al 8% y grano de película fijo.               */
 @theme inline {
   /* Superficies */
-  --color-bg-base: #ffffff;
-  --color-bg-surface: #fafafa;
-  --color-bg-elevated: #f2f4f7;
-  --color-navy-band: #061b31;
-  --color-parchment: #f5f3ee;
+  --color-bg-base: #0a0b0c;
+  --color-bg-surface: #101214;
+  --color-bg-elevated: #181b1e;
+  --color-navy-band: #0d0f11;
+  --color-parchment: #f1f2ec;
 
-  /* Acentos */
-  --color-accent-primary: #d4af37;          /* latón — solo 3 usos */
-  --color-accent-primary-hover: #b8952e;
-  --color-accent-secondary: #061b31;        /* navy — links e iconos */
-  --color-accent-secondary-hover: #13324f;
+  /* Acentos: uno solo, volt, en toda la página */
+  --color-accent-primary: #c9f24b;
+  --color-accent-primary-hover: #d8fb66;
+  --color-accent-secondary: #c9f24b;
+  --color-accent-secondary-hover: #d8fb66;
 
   /* Texto */
-  --color-text-primary: #061b31;
-  --color-text-secondary: #35424e;
-  --color-text-muted: #5c6c7a;
-  --color-text-inverted: #ffffff;
+  --color-text-primary: #f1f2ec;
+  --color-text-secondary: #a9aea2;
+  --color-text-muted: #6f756a;
+  --color-text-inverted: #0a0b0c;
 
-  /* Bordes: hairlines teñidos de azul (la firma) */
-  --color-border-subtle: rgba(50, 50, 93, 0.09);
-  --color-border-default: rgba(50, 50, 93, 0.16);
-  --color-border-focus: hsla(212, 100%, 48%, 1);
+  /* Bordes: hairlines blancos */
+  --color-border-subtle: rgba(255, 255, 255, 0.07);
+  --color-border-default: rgba(255, 255, 255, 0.14);
+  --color-border-focus: #c9f24b;
 
-  /* Semánticos suavizados para lienzo claro */
-  --color-success: #1a7f4b;
-  --color-warning: #b26a00;
-  --color-error: #b3261e;
+  /* Semánticos sobre fondo oscuro */
+  --color-success: #3ddc84;
+  --color-warning: #e8b33c;
+  --color-error: #f16464;
 
-  /* Tipografía: sans + mono, nada de pixel */
+  /* Tipografía */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -43,15 +43,16 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
 
-  /* Sombra-as-borde multicapa, teñida de azul */
-  --shadow-border: 0 0 0 1px rgba(50, 50, 93, 0.08);
-  --shadow-card: 0 0 0 1px rgba(50, 50, 93, 0.07),
-    0 2px 4px rgba(50, 50, 93, 0.06), 0 12px 28px -8px rgba(50, 50, 93, 0.14);
-  --shadow-card-hover: 0 0 0 1px rgba(50, 50, 93, 0.08),
-    0 8px 16px rgba(50, 50, 93, 0.1), 0 24px 48px -12px rgba(6, 27, 49, 0.2);
-  --shadow-float: 0 0 0 1px rgba(50, 50, 93, 0.08),
-    0 24px 48px -12px rgba(6, 27, 49, 0.28),
-    0 8px 16px -8px rgba(50, 50, 93, 0.12);
+  /* Sombras: negro profundo, brillo volt solo en hover */
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.07);
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.5), 0 16px 40px -12px rgba(0, 0, 0, 0.7);
+  --shadow-card-hover: 0 0 0 1px rgba(201, 242, 75, 0.25),
+    0 8px 20px rgba(0, 0, 0, 0.6), 0 24px 56px -12px rgba(0, 0, 0, 0.8);
+  --shadow-float: 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 32px 64px -16px rgba(0, 0, 0, 0.85), 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+  --shadow-volt: 0 0 24px rgba(201, 242, 75, 0.35),
+    0 0 80px rgba(201, 242, 75, 0.12);
 }
 
 html {
@@ -68,17 +69,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Jerarquía tipográfica: peso liviano en display, tracking negativo */
+/* Grano de película: capa fija, nunca sobre contenedores con scroll */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Jerarquía tipográfica: display pesado, tracking negativo */
 h1 {
-  font-weight: 300;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 h2 {
-  font-weight: 300;
-  letter-spacing: -0.028em;
-  line-height: 1.15;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 h3,
@@ -90,17 +102,15 @@ h6 {
 }
 
 ::selection {
-  background-color: rgba(212, 175, 55, 0.25);
-  color: var(--color-text-primary);
+  background-color: rgba(201, 242, 75, 0.9);
+  color: #0a0b0c;
 }
 
-/* Focus accesible: anillo azul saturado, no dorado */
 :focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }
 
-/* Scrollbar discreta sobre lienzo claro */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -110,13 +120,13 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(50, 50, 93, 0.22);
+  background: rgba(255, 255, 255, 0.14);
   border-radius: 5px;
   border: 2px solid var(--color-bg-base);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(50, 50, 93, 0.38);
+  background: rgba(255, 255, 255, 0.28);
 }
 
 /* Etiqueta técnica: mono en mayúsculas, tracking amplio */
@@ -129,7 +139,7 @@ h6 {
   color: var(--color-text-muted);
 }
 
-/* Pill F — badge de stack/habilidades/estado */
+/* Pill — badge de stack/habilidades/estado */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -139,7 +149,7 @@ h6 {
   font-size: 12.5px;
   line-height: 1.4;
   color: var(--color-text-secondary);
-  background: var(--color-bg-surface);
+  background: rgba(255, 255, 255, 0.04);
   box-shadow: inset 0 0 0 1px var(--color-border-subtle);
 }
 
@@ -150,18 +160,22 @@ h6 {
   justify-content: center;
   gap: 8px;
   border-radius: 9999px;
-  background: var(--color-navy-band);
+  background: var(--color-accent-primary);
   color: var(--color-text-inverted);
-  font-weight: 500;
-  box-shadow: 0 1px 2px rgba(50, 50, 93, 0.22),
-    0 2px 5px rgba(50, 50, 93, 0.12);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 2px 12px rgba(201, 242, 75, 0.2);
+  transition: box-shadow 0.25s ease, transform 0.25s ease,
+    background-color 0.25s ease;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 3px 9px rgba(50, 50, 93, 0.28),
-    0 8px 24px rgba(50, 50, 93, 0.16);
+  background: var(--color-accent-primary-hover);
+  box-shadow: var(--shadow-volt);
   transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .btn-ghost {
@@ -172,13 +186,56 @@ h6 {
   border-radius: 9999px;
   color: var(--color-text-primary);
   font-weight: 500;
-  box-shadow: inset 0 0 0 1px rgba(50, 50, 93, 0.18);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: inset 0 0 0 1px var(--color-border-default);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .btn-ghost:hover {
-  background: var(--color-bg-surface);
-  box-shadow: inset 0 0 0 1px rgba(50, 50, 93, 0.32);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(201, 242, 75, 0.45);
+}
+
+.btn-ghost:active {
+  transform: scale(0.98);
+}
+
+/* Línea de título que se revela desde su máscara (usado en Hero).
+   El padding inferior reserva espacio para descendentes (y, g, p)
+   sin romper el ritmo vertical de la composición. */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.line-mask > span {
+  display: block;
+  translate: 0 110%;
+  animation: line-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes line-rise {
+  to {
+    translate: 0 0;
+  }
+}
+
+/* Marquee infinito de tecnologías — una sola por página */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
 }
 
 /* Reduced motion */
@@ -190,5 +247,14 @@ h6 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .line-mask > span {
+    translate: 0 0;
+  }
+
+  .marquee-track {
+    width: 100%;
+    justify-content: center;
   }
 }
