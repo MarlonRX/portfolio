@@ -3,7 +3,9 @@ import { getServerTranslations } from "@/lib/i18n";
 import { projects } from "@/data/projects";
 import { ProjectCategory } from "@/types/project";
 import ProjectCard from "@/components/sections/ProjectCard";
+import SplitText from "@/components/animations/SplitText";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 const CATEGORY_ORDER: ProjectCategory[] = ["web", "tooling", "terminal"];
 
@@ -36,32 +38,32 @@ export default async function ProjectsPage({
   const ordered = [...visible].sort((a, b) => rank(a) - rank(b));
 
   const cards = ordered.map((project, idx) => (
-    <ScrollReveal
-      key={project.slug}
-      delay={0.1 + idx * 0.08}
-      className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
-    >
+    <SpotlightCard key={project.slug} className="rounded-2xl">
       <ProjectCard project={project} priority={idx < 2} />
-    </ScrollReveal>
+    </SpotlightCard>
   ));
 
   return (
     <div className="pt-24 pb-24 md:pb-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <ScrollReveal>
-            <h1 className="text-4xl md:text-5xl text-text-primary mb-4">
-              {t("title")}
-            </h1>
-          </ScrollReveal>
+          <SplitText
+            text={t("title")}
+            tag="h1"
+            textAlign="left"
+            className="mb-4 text-4xl text-text-primary md:text-5xl"
+            from={{ opacity: 0, y: 30 }}
+            duration={0.9}
+            delay={40}
+          />
           <ScrollReveal delay={0.1}>
-            <p className="text-text-secondary text-lg md:text-xl max-w-3xl leading-relaxed">
+            <p className="max-w-3xl text-lg leading-relaxed text-text-secondary md:text-xl">
               {t("subtitle")}
             </p>
           </ScrollReveal>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8">{cards}</div>
+        <div className="grid gap-8">{cards}</div>
       </div>
     </div>
   );

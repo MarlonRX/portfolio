@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import { getServerTranslations } from "@/lib/i18n";
 import { Code2, Briefcase, Mail, ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import SplitText from "@/components/animations/SplitText";
+import SpecularButton from "@/components/ui/SpecularButton";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 export async function generateMetadata({
   params,
@@ -16,27 +19,6 @@ export async function generateMetadata({
   };
 }
 
-const contactLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/MarlonRX",
-    icon: <Code2 size={20} />,
-    handle: "@MarlonRX",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/marlon-ramirez-6b448b268",
-    icon: <Briefcase size={20} />,
-    handle: "Marlon Ramirez",
-  },
-  {
-    name: "Email",
-    href: "mailto:mramirezce1420@gmail.com",
-    icon: <Mail size={20} />,
-    handle: "mramirezce1420@gmail.com",
-  },
-];
-
 export default async function ContactPage({
   params,
 }: {
@@ -44,6 +26,27 @@ export default async function ContactPage({
 }) {
   const { locale } = await params;
   const t = await getServerTranslations(locale, "contact");
+
+  const contactLinks = [
+    {
+      name: t("links.github"),
+      href: "https://github.com/MarlonRX",
+      icon: <Code2 size={20} />,
+      handle: "@MarlonRX",
+    },
+    {
+      name: t("links.linkedin"),
+      href: "https://www.linkedin.com/in/marlon-ramirez-6b448b268",
+      icon: <Briefcase size={20} />,
+      handle: "Marlon Ramirez",
+    },
+    {
+      name: t("links.email"),
+      href: "mailto:mramirezce1420@gmail.com",
+      icon: <Mail size={20} />,
+      handle: "mramirezce1420@gmail.com",
+    },
+  ];
 
   return (
     <div className="pt-32 pb-24 md:pb-32 px-4 sm:px-6 lg:px-8">
@@ -54,24 +57,43 @@ export default async function ContactPage({
               <span className="inline-block h-px w-5 bg-accent-primary" />
               {t("title")}
             </p>
-            <h1 className="mb-4 text-4xl md:text-5xl text-text-primary">
-              {t("cta")}
-            </h1>
-            <p className="text-lg text-text-secondary max-w-xl">
+          </ScrollReveal>
+          <SplitText
+            text={t("cta")}
+            tag="h1"
+            textAlign="left"
+            className="mb-4 text-4xl text-text-primary md:text-5xl"
+            from={{ opacity: 0, y: 30 }}
+            duration={0.9}
+            delay={40}
+          />
+          <ScrollReveal delay={0.1}>
+            <p className="max-w-xl text-lg text-text-secondary">
               {t("subtitle")}
             </p>
           </ScrollReveal>
+          <div className="mt-9">
+            <SpecularButton
+              size="md"
+              radius={24}
+              onClick={() => {
+                window.location.href = "mailto:mramirezce1420@gmail.com";
+              }}
+            >
+              {t("emailCta")}
+            </SpecularButton>
+          </div>
         </div>
 
         <ScrollReveal delay={0.15}>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {contactLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="group flex items-center gap-4 rounded-xl bg-bg-base p-5 shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]"
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-bg-elevated text-accent-secondary transition-colors group-hover:bg-navy-band group-hover:text-white">
+              <SpotlightCard key={link.name} className="rounded-xl">
+                <a
+                  href={link.href}
+                  className="group flex h-full items-center gap-4 rounded-xl bg-bg-base p-5 shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]"
+                >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-bg-elevated text-accent-secondary transition-colors group-hover:bg-accent-primary group-hover:text-text-inverted">
                   {link.icon}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -86,7 +108,8 @@ export default async function ContactPage({
                   size={18}
                   className="text-text-muted transition-colors group-hover:text-accent-secondary"
                 />
-              </a>
+                </a>
+              </SpotlightCard>
             ))}
           </div>
         </ScrollReveal>

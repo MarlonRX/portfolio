@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { getServerTranslations } from "@/lib/i18n";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import DecryptedText from "@/components/animations/DecryptedText";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 export async function generateMetadata({
   params,
@@ -18,7 +20,7 @@ export async function generateMetadata({
 
 const skillCategories = [
   {
-    title: "Frontend",
+    key: "frontend",
     skills: [
       "React",
       "Next.js",
@@ -29,11 +31,11 @@ const skillCategories = [
     ],
   },
   {
-    title: "Backend",
+    key: "backend",
     skills: ["Laravel", "PHP", "Node.js", "REST APIs", "JWT Auth", "MySQL"],
   },
   {
-    title: "Herramientas & DevOps",
+    key: "tools",
     skills: ["Git", "Docker", "Kubernetes", "CI/CD", "Linux", "Nginx"],
   },
 ];
@@ -66,14 +68,27 @@ export default async function AboutPage({
                 <span className="inline-block h-px w-5 bg-accent-primary" />
                 {t("role")}
               </p>
-              <h1 className="text-4xl md:text-5xl text-text-primary mb-6">
-                {t("title")}
+              <h1 className="mb-6 text-4xl text-text-primary md:text-5xl">
+                <DecryptedText
+                  text={t("title")}
+                  animateOn="view"
+                  sequential
+                  revealDirection="start"
+                  speed={40}
+                  encryptedClassName="text-accent-primary"
+                />
               </h1>
 
               <div className="space-y-4 text-text-secondary leading-relaxed">
-                <p>{t("bio1")}</p>
-                <p>{t("bio2")}</p>
-                <p>{t("bio3")}</p>
+                <ScrollReveal delay={0.1}>
+                  <p>{t("bio1")}</p>
+                </ScrollReveal>
+                <ScrollReveal delay={0.2}>
+                  <p>{t("bio2")}</p>
+                </ScrollReveal>
+                <ScrollReveal delay={0.3}>
+                  <p>{t("bio3")}</p>
+                </ScrollReveal>
               </div>
             </div>
           </div>
@@ -87,22 +102,21 @@ export default async function AboutPage({
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {skillCategories.map((category, idx) => (
-              <ScrollReveal key={category.title} delay={0.15 + idx * 0.1}>
-                <div className="rounded-2xl bg-bg-base p-6 shadow-[var(--shadow-card)]">
-                  <h3 className="tech-label mb-4 border-b border-border-subtle pb-2.5 normal-case tracking-[1.4px]">
-                    {category.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="pill text-xs"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+              <ScrollReveal key={category.key} delay={0.15 + idx * 0.1}>
+                <SpotlightCard className="h-full rounded-2xl">
+                  <div className="h-full rounded-2xl bg-bg-surface p-6 shadow-[var(--shadow-card)]">
+                    <h3 className="tech-label mb-4 border-b border-border-subtle pb-2.5 normal-case tracking-[1.4px]">
+                      {t(`skills.${category.key}`)}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <span key={skill} className="pill text-xs">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </SpotlightCard>
               </ScrollReveal>
             ))}
           </div>
@@ -113,7 +127,7 @@ export default async function AboutPage({
             <h2 className="text-2xl text-text-primary mb-6">
               {t("experience.title")}
             </h2>
-            <div className="rounded-2xl bg-bg-base p-8 md:p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-2xl bg-bg-surface p-8 md:p-10 shadow-[var(--shadow-card)]">
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
                 <div>
                   <h3 className="text-xl md:text-2xl font-medium text-text-primary">
@@ -152,3 +166,4 @@ export default async function AboutPage({
     </div>
   );
 }
+
