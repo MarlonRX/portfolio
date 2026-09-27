@@ -5,53 +5,55 @@ import { useTranslations, useLocale } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import ProjectCard from "./ProjectCard";
 
 export default function FeaturedProjects() {
   const t = useTranslations("home.projects");
   const locale = useLocale();
+  const prefersReduced = useReducedMotion();
 
-  const featuredProjects = projects.filter((p) => p.view).slice(0, 3);
+  const featuredProjects = projects.filter((p) => p.view).slice(0, 4);
 
   return (
-    <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+      <div className="mx-auto max-w-6xl">
         <m.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReduced ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-14 md:mb-20"
         >
-          <h2 className="mb-4 text-3xl md:text-4xl text-text-primary">
+          <h2 className="mb-4 text-4xl text-text-primary md:text-5xl">
             {t("title")}
           </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
+          <p className="max-w-[52ch] text-text-secondary">{t("subtitle")}</p>
         </m.div>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+        {/* Stack pegajoso: cada tarjeta se apila sobre la anterior al hacer scroll */}
+        <div className="relative">
           {featuredProjects.map((project, index) => (
-            <m.div
+            <div
               key={project.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] max-w-md md:max-w-none"
+              className={prefersReduced ? "mb-8" : "sticky mb-[10vh]"}
+              style={
+                prefersReduced
+                  ? undefined
+                  : { top: `calc(5.5rem + ${index * 1.25}rem)`, zIndex: index + 1 }
+              }
             >
-              <ProjectCard project={project} priority={index < 2} />
-            </m.div>
+              <ProjectCard project={project} priority={index === 0} />
+            </div>
           ))}
         </div>
 
         <m.div
-          initial={{ opacity: 0 }}
+          initial={prefersReduced ? false : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-16"
         >
           <Link
             href={`/${locale}/projects`}
@@ -60,7 +62,7 @@ export default function FeaturedProjects() {
             {t("viewAll")}
             <ArrowRight
               size={18}
-              className="group-hover:translate-x-1 transition-transform"
+              className="transition-transform group-hover:translate-x-1"
             />
           </Link>
         </m.div>
