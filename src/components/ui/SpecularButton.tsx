@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, type ReactNode, type CSSProperties } from "react";
+import { useRef, useEffect, type ReactNode, type CSSProperties, type RefObject } from "react";
 import { Renderer, Program, Mesh, Triangle, Color } from "ogl";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import "./SpecularButton.css";
@@ -101,6 +101,7 @@ export interface SpecularButtonProps {
   onClick?: () => void;
   className?: string;
   type?: "button" | "submit";
+  href?: string;
 }
 
 export default function SpecularButton({
@@ -124,10 +125,11 @@ export default function SpecularButton({
   disabled = false,
   onClick,
   className = "",
-  type = "button"
+  type = "button",
+  href
 }: SpecularButtonProps) {
   const prefersReduced = useReducedMotion();
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const btnRef = useRef<HTMLElement>(null);
   const fxRef = useRef<HTMLSpanElement>(null);
   const propsRef = useRef<SpecularProps>({
     radius,
@@ -280,23 +282,39 @@ export default function SpecularButton({
     };
   }, [prefersReduced]);
 
+  const content = (
+    <>
+      <span ref={fxRef} className="specular-button__fx" aria-hidden="true" />
+      <span className="specular-button__label">{children}</span>
+    </>
+  );
+  const cls = `specular-button specular-button--${size}${className ? ` ${className}` : ""}`;
+  const style = {
+    "--sb-radius": `${radius}px`,
+    "--sb-tint": tint,
+    "--sb-tint-opacity": tintOpacity,
+    "--sb-blur": `${blur}px`,
+    "--sb-text-color": textColor
+  } as CSSProperties;
+
+  if (href) {
+    return (
+      <a ref={btnRef as RefObject<HTMLAnchorElement>} href={href} className={cls} style={style}>
+        {content}
+      </a>
+    );
+  }
+
   return (
     <button
-      ref={btnRef}
+      ref={btnRef as RefObject<HTMLButtonElement>}
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={`specular-button specular-button--${size}${className ? ` ${className}` : ""}`}
-      style={{
-        "--sb-radius": `${radius}px`,
-        "--sb-tint": tint,
-        "--sb-tint-opacity": tintOpacity,
-        "--sb-blur": `${blur}px`,
-        "--sb-text-color": textColor
-      } as CSSProperties}
+      className={cls}
+      style={style}
     >
-      <span ref={fxRef} className="specular-button__fx" aria-hidden="true" />
-      <span className="specular-button__label">{children}</span>
+      {content}
     </button>
   );
 }

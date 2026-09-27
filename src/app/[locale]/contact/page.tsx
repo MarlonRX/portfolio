@@ -73,13 +73,7 @@ export default async function ContactPage({
             </p>
           </ScrollReveal>
           <div className="mt-9">
-            <SpecularButton
-              size="md"
-              radius={24}
-              onClick={() => {
-                window.location.href = "mailto:mramirezce1420@gmail.com";
-              }}
-            >
+            <SpecularButton size="md" radius={24} href="mailto:mramirezce1420@gmail.com">
               {t("emailCta")}
             </SpecularButton>
           </div>
