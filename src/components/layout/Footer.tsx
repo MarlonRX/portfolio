@@ -56,7 +56,7 @@ export default function Footer() {
               <Code2 size={18} />
             </a>
             <a
-              href="https://www.linkedin.com/in/marlon-ramirez-6b448b268"
+              href="https://www.linkedin.com/in/mramirezce"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"

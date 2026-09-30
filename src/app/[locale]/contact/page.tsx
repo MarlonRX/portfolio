@@ -39,7 +39,7 @@ export default async function ContactPage({
     },
     {
       name: t("links.linkedin"),
-      href: "https://www.linkedin.com/in/marlon-ramirez-6b448b268",
+      href: "https://www.linkedin.com/in/mramirezce",
       icon: <Briefcase size={20} />,
       handle: "Marlon Ramirez",
     },
